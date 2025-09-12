@@ -30,5 +30,5 @@ Cell [0;32mIn[5], line 1[0m
 [0;31mTypeError[0m: HypersingularOperator(): incompatible function arguments. The following argument types are supported:
     1. (space: ngcomp::FESpace, definedon: Optional[ngcomp::Region] = None, intorder: int = 3, leafsize: int = 40, eta: float = 2.0, eps: float = 1e-06, method: str = 'aca', testhmatrix: bool = False) -> ngbem._ngbem.IntegralOperator
 
-Invoked with: <ngsolve.comp.H1 object at 0x72be7abc3d70>; kwargs: intorder=12, leafsize=40, eta=3.0, eps=1e-11, method='aca'
+Invoked with: <ngsolve.comp.H1 object at 0x7552067dfa70>; kwargs: intorder=12, leafsize=40, eta=3.0, eps=1e-11, method='aca'
 

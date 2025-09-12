@@ -17,7 +17,7 @@ Installation:
 * Install a recent NGSolve (later than August 25, 2025)
 
 Try notebooks from the demos folder.
-You can read (only read) them directly on github: https://github.com/Weggler/docu_ngsbem/tree/main/demos
+You can read (only read) them directly on github: https://github.com/Weggler/docu-ngsbem
 
 
 ```{tableofcontents}

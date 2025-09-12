@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -177,6 +179,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/why_bem.html">Boundary Element Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
 </ul>
 
     </div>
@@ -390,7 +396,7 @@ It uses numerical integration following [Sauter-Schwab: Boundary Element Methods
 <li><p>Install a recent NGSolve (later than August 25, 2025)</p></li>
 </ul>
 <p>Try notebooks from the demos folder.
-You can read (only read) them directly on github: <a class="github reference external" href="https://github.com/Weggler/docu_ngsbem/tree/main/demos">Weggler/docu_ngsbem</a></p>
+You can read (only read) them directly on github: <a class="github reference external" href="https://github.com/Weggler/docu-ngsbem">Weggler/docu-ngsbem</a></p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
 <ul>
@@ -398,6 +404,10 @@ You can read (only read) them directly on github: <a class="github reference ext
 </ul>
 </div>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
+</ul>
 </div>
 </section>
 
