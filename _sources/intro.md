@@ -1,11 +1,25 @@
-# Welcome to your Jupyter Book
+# Welcome to NGSBEM
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+NGSBem implements boundary integral operators on top of NGSolve.
 
-Check out the content pages bundled with this sample book to see more.
+Currently it supports single-layer and double-layer operators and hypersingular operators for the
+
+* Laplace equation
+* Helmholtz equation
+* Maxwell equation
+
+NGSBem supports high order function spaces on curved surface meshes.
+It uses numerical integration following [Sauter-Schwab: Boundary Element Methods, 2009], and matrix compression and potential evalution based on the Fast Multipole Method  [Rokhlin, Greengard, Rapid Solution of Integral Equations of Classic Potential Theory, 1985].
+
+
+Installation:
+
+* Install a recent NGSolve (later than August 25, 2025)
+
+Try notebooks from the demos folder.
+You can read (only read) them directly on github: https://github.com/Weggler/docu_ngsbem/tree/main/demos
+
 
 ```{tableofcontents}
 ```
+
