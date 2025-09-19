@@ -47,7 +47,7 @@ for order in range(1, 5):
 
             lhs = V.mat - K.mat + K.mat.T + W.mat 
             rhs  = ((0.5 * ( M.mat + M.mat.T) + ( K.mat - K.mat.T) - V.mat - W.mat) * udn.vec).Evaluate()
-            pre = BilinearForm( (u * v + dudn * dvdn) * ds(bonus_intorder=ntorder) ).Assemble().mat.Inverse(freedofs=fes.FreeDofs())
+            pre = BilinearForm( (u * v + dudn * dvdn) * ds(bonus_intorder=intorder) ).Assemble().mat.Inverse(freedofs=fes.FreeDofs())
 
             sol = GMRes(A=lhs, b=rhs, pre=pre, maxsteps=400, printrates=False, tol=1e-12)
 
@@ -61,11 +61,9 @@ for order in range(1, 5):
         # Post-processing on screen
         fes_screen = H1(mesh_screen, order=13)
         gf_screen = GridFunction(fes_screen)
-        uH1, vH1 = fesH1.TnT()
-        uL2, vL2 = fesL2.TnT()
-        SLPotential = LaplaceSL(uL2*ds(bonus_intorder=intorder))
-        DLPotential = LaplaceDL(uH1*ds(bonus_intorder=intorder))
-        repformula = SLPotential(gfu.components[1]) - DLPotential(gfu.components[0]) + SLPotential(udn.components[1]) - DLPotential(udn.components[0])
+        SLPotential = LaplaceSL(dudn*ds(bonus_intorder=intorder))
+        DLPotential = LaplaceDL(u*ds(bonus_intorder=intorder))
+        repformula = SLPotential(gfu) - DLPotential(gfu) + SLPotential(udn) - DLPotential(udn)
         with TaskManager():
             gf_screen.Set(repformula, definedon=mesh_screen.Boundaries("screen"), dual=False)
 
