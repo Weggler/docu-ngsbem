@@ -31,5 +31,5 @@ Cell [0;32mIn[5], line 1[0m
     1. (space: ngcomp::FESpace, intorder: int = 3, leafsize: int = 40, eta: float = 2.0, eps: float = 1e-06, method: str = 'aca', testhmatrix: bool = False) -> ngbem._ngbem.IntegralOperator
     2. (trial_space: ngcomp::FESpace, test_space: ngcomp::FESpace, trial_definedon: Optional[ngcomp::Region] = None, test_definedon: Optional[ngcomp::Region] = None, intorder: int = 3, leafsize: int = 40, eta: float = 2.0, eps: float = 1e-06, method: str = 'aca', testhmatrix: bool = False) -> ngbem._ngbem.IntegralOperator
 
-Invoked with: <ngsolve.comp.SurfaceL2 object at 0x787439bc7c50>; kwargs: intorder=10, method='aca'
+Invoked with: <ngsolve.comp.SurfaceL2 object at 0x7d3fc73cbc50>; kwargs: intorder=10, method='aca'
 

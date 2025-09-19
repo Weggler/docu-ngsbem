@@ -30,5 +30,5 @@ Cell [0;32mIn[6], line 1[0m
 [0;31mTypeError[0m: MaxwellSingleLayerPotentialOperator(): incompatible function arguments. The following argument types are supported:
     1. (space: ngcomp::FESpace, kappa: float, definedon: Optional[ngcomp::Region] = None, intorder: int = 3, leafsize: int = 40, eta: float = 2.0, eps: float = 1e-06, method: str = 'aca', testhmatrix: bool = False) -> ngbem._ngbem.IntegralOperatorC
 
-Invoked with: <ngsolve.comp.HDivSurface object at 0x76029f1afd70>, 5.0034083602476045; kwargs: intorder=10, leafsize=40, eta=3.0, eps=0.0001
+Invoked with: <ngsolve.comp.HDivSurface object at 0x72a824f9bfb0>, 5.0034083602476045; kwargs: intorder=10, leafsize=40, eta=3.0, eps=0.0001
 
