@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'demos/Maxwell_DtN_indirect';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maxwell PEC Direct method" href="Maxwell_DtN_direct.html" />
+    <link rel="prev" title="Laplace FEM-BEM Coupling" href="FEMBEM_Capacitor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,10 +178,22 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../short_and_sweet/why_bem.html">Boundary Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../short_and_sweet/Laplace_Formulations.html">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../short_and_sweet/Maxwell_Formulations.html">BIE for Maxwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../short_and_sweet/ho_cvg.html">Convergence Rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Laplace_DtN_direct.html">Dirichlet Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Laplace_NtD_indirect.html">Neumann Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Laplace_NtD_direct.html">Neumann Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Maxwell PEC Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
 </ul>
 
     </div>
@@ -453,7 +465,7 @@ ndof HDiv =  1568
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa =  5.0034083602476045
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "41ddb0c8e9e34cae8d6a31f6c0702595"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e123020cc89e43ad878fa551c04487b2"}</script></div>
 </div>
 <p><strong>Boundary Integral Equation</strong></p>
 <p>The density <span class="math notranslate nohighlight">\(\boldsymbol j\)</span> is determined by the boundary element method, i.e. the numerical solution of the variational formulation</p>
@@ -500,7 +512,7 @@ ndof HDiv =  1568
 <span class="ne">TypeError</span>: __call__(): incompatible function arguments. The following argument types are supported:
 <span class="g g-Whitespace">    </span><span class="mi">1</span><span class="o">.</span> <span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">DifferentialSymbol</span><span class="p">,</span> <span class="n">definedon</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">Region</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">element_boundary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">element_vb</span><span class="p">:</span> <span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">VorB</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">VorB</span><span class="o">.</span><span class="n">VOL</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">skeleton</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">bonus_intorder</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">intrules</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ngsolve</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">ET</span><span class="p">,</span> <span class="n">ngsolve</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">IntegrationRule</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">deformation</span><span class="p">:</span> <span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">GridFunction</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">definedonelements</span><span class="p">:</span> <span class="n">pyngcore</span><span class="o">.</span><span class="n">pyngcore</span><span class="o">.</span><span class="n">BitArray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">DifferentialSymbol</span>
 
-<span class="n">Invoked</span> <span class="k">with</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">DifferentialSymbol</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7e6f50643030</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">bounus_intorder</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">Invoked</span> <span class="k">with</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ngsolve</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">DifferentialSymbol</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7b07e1545a70</span><span class="o">&gt;</span><span class="p">;</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">bounus_intorder</span><span class="o">=</span><span class="mi">6</span>
 </pre></div>
 </div>
 </div>
@@ -613,6 +625,24 @@ ndof HDiv =  1568
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="FEMBEM_Capacitor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Laplace FEM-BEM Coupling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Maxwell_DtN_direct.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Maxwell PEC Direct method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'short_and_sweet/ho_cvg';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dirichlet Laplace Indirect Method" href="../demos/Laplace_DtN_indirect.html" />
+    <link rel="prev" title="BIE for Maxwell" href="Maxwell_Formulations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -176,8 +176,11 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="why_bem.html">Boundary Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Laplace_Formulations.html">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Maxwell_Formulations.html">BIE for Maxwell</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Convergence Rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -411,97 +414,9 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit ball and <span class="math notranslate nohighlight">\(\Gamma\)</span> the unit sphere, respectively. Using the NG-BEM solver we compute the Dirichlet data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.</p>
-<p>The following table contains the numerical results of our convergence test.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>mesh size</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=1\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=3\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=4\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>96</p></td>
-<td class="text-center"><p>50</p></td>
-<td class="text-center"><p>5.64e-02</p></td>
-<td class="text-center"><p>194</p></td>
-<td class="text-center"><p>1.26e-02</p></td>
-<td class="text-center"><p>434</p></td>
-<td class="text-center"><p>4.17e-04</p></td>
-<td class="text-center"><p>770</p></td>
-<td class="text-center"><p>5.22e-05</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>172</p></td>
-<td class="text-center"><p>88</p></td>
-<td class="text-center"><p>3.13e-02</p></td>
-<td class="text-center"><p>346</p></td>
-<td class="text-center"><p>2.02e-03</p></td>
-<td class="text-center"><p>776</p></td>
-<td class="text-center"><p>2.37e-04</p></td>
-<td class="text-center"><p>1378</p></td>
-<td class="text-center"><p>2.70e-05</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>456</p></td>
-<td class="text-center"><p>230</p></td>
-<td class="text-center"><p>1.11e-02</p></td>
-<td class="text-center"><p>914</p></td>
-<td class="text-center"><p>5.85e-04</p></td>
-<td class="text-center"><p>2054</p></td>
-<td class="text-center"><p>3.86e-05</p></td>
-<td class="text-center"><p>3650</p></td>
-<td class="text-center"><p>3.82e-06</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>784</p></td>
-<td class="text-center"><p>394</p></td>
-<td class="text-center"><p>5.39e-04</p></td>
-<td class="text-center"><p>1570</p></td>
-<td class="text-center"><p>2.40e-04</p></td>
-<td class="text-center"><p>3530</p></td>
-<td class="text-center"><p>9.51e-06</p></td>
-<td class="text-center"><p>6274</p></td>
-<td class="text-center"><p>4.48e-07</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>1228</p></td>
-<td class="text-center"><p>616</p></td>
-<td class="text-center"><p>3.38e-04</p></td>
-<td class="text-center"><p>2458</p></td>
-<td class="text-center"><p>1.24e-04</p></td>
-<td class="text-center"><p>5528</p></td>
-<td class="text-center"><p>3.73e-06</p></td>
-<td class="text-center"><p>9826</p></td>
-<td class="text-center"><p>1.40e-07</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>1922</p></td>
-<td class="text-center"><p>963</p></td>
-<td class="text-center"><p>2.04e-04</p></td>
-<td class="text-center"><p>3846</p></td>
-<td class="text-center"><p>6.44e-05</p></td>
-<td class="text-center"><p>8651</p></td>
-<td class="text-center"><p>1.47e-06</p></td>
-<td class="text-center"><p>15378</p></td>
-<td class="text-center"><p>4.52e-08</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>To catch the meaning of these results consider the <span class="math notranslate nohighlight">\(L_2\)</span>-error as function of the number of degrees of freedom (ndofs) for order <span class="math notranslate nohighlight">\(p=1,...,4\)</span>:</p>
-<p><img alt="" src="../_images/plot_Laplace_Dirichlet.png" /></p>
+<p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit ball and <span class="math notranslate nohighlight">\(\Gamma\)</span> the unit sphere, respectively. Using the NG-BEM solver we compute the Dirichlet data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we can compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
+<p><img alt="" src="../_images/laplace_NtD_accuracy.png" /></p>
+<p>Note that the Neumann problem is not uniquely solvable. They are the same up to a constant. Thus we compare here the surface gradients of the numerical and the exact solution.</p>
 <p><strong>Test 2: Laplace Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span></strong></p>
 <p>To analyse convergence rates for traces in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span> consider now the Dirichlet boundary value problem with unkonwn Neumann data, i.e.,</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -519,102 +434,12 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Thus, again <span class="math notranslate nohighlight">\(u\)</span> from Test 1 is the unique solution of this problem. Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span>  on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.</p>
-<p>The following table contains the numerical results of our convergence test.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>mesh size</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head"><p>ndofs</p></th>
-<th class="head"><p>error</p></th>
-<th class="head"><p>ndofs</p></th>
-<th class="head"><p>error</p></th>
-<th class="head"><p>ndofs</p></th>
-<th class="head"><p>error</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=0\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(p=1\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(p=2\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(p=3\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>96</p></td>
-<td class="text-center"><p>96</p></td>
-<td class="text-center"><p>2.59e-01</p></td>
-<td><p>288</p></td>
-<td><p>7.05e-02</p></td>
-<td><p>576</p></td>
-<td><p>6.66e-03</p></td>
-<td><p>960</p></td>
-<td><p>5.10e-04</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>172</p></td>
-<td class="text-center"><p>1720</p></td>
-<td class="text-center"><p>1.84e-01</p></td>
-<td><p>516</p></td>
-<td><p>5.02e-02</p></td>
-<td><p>1032</p></td>
-<td><p>4.06e-03</p></td>
-<td><p>1720</p></td>
-<td><p>2.49e-04</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>456</p></td>
-<td class="text-center"><p>4560</p></td>
-<td class="text-center"><p>1.15e-01</p></td>
-<td><p>1368</p></td>
-<td><p>2.00e-02</p></td>
-<td><p>2736</p></td>
-<td><p>1.01e-03</p></td>
-<td><p>4560</p></td>
-<td><p>4.08e-05</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>784</p></td>
-<td class="text-center"><p>7840</p></td>
-<td class="text-center"><p>8.47e-02</p></td>
-<td><p>2352</p></td>
-<td><p>1.04e-02</p></td>
-<td><p>4704</p></td>
-<td><p>4.09e-04</p></td>
-<td><p>7840</p></td>
-<td><p>1.30e-05</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>1228</p></td>
-<td class="text-center"><p>1220</p></td>
-<td class="text-center"><p>6.89e-02</p></td>
-<td><p>3684</p></td>
-<td><p>6.72e-03</p></td>
-<td><p>7368</p></td>
-<td><p>2.07e-04</p></td>
-<td><p>12280</p></td>
-<td><p>5.40e-06</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>1922</p></td>
-<td class="text-center"><p>1922</p></td>
-<td class="text-center"><p>5.39e-02</p></td>
-<td><p>5766</p></td>
-<td><p>4.21e-03</p></td>
-<td><p>11532</p></td>
-<td><p>1.06e-04</p></td>
-<td><p>19220</p></td>
-<td><p>2.06e-06</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>To catch the meaning of these results consider the <span class="math notranslate nohighlight">\(L_2\)</span>-error as function of the number of degrees of freedom (ndofs) for order <span class="math notranslate nohighlight">\(p=1,...,4\)</span>:</p>
-<p><img alt="" src="../_images/plot_Laplace_Neumann.png" /></p>
+<p>Thus, again <span class="math notranslate nohighlight">\(u\)</span> from Test 1 is the unique solution of this problem. Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span>  on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
+<p><img alt="" src="../_images/laplace_DtN_accuracy.png" /></p>
 <p><strong>Common notes for Test 1 and 2:</strong></p>
 <ul class="simple">
-<li><p>We actually considered the Laplace operator with mixed boundary values and solved the bvp only once.</p></li>
 <li><p>Our manufactured solution <span class="math notranslate nohighlight">\(u\)</span> does not depend on the mesh, i.e., it is a solution for all meshes. This is why the geometrical approximation order is <span class="math notranslate nohighlight">\(1\)</span> for all test runs.</p></li>
-<li><p>Check out the repository’s test folder if you like to run this test.</p></li>
+<li><p>Check out the repository’s <code class="docutils literal notranslate"><span class="pre">convergence_timing</span></code> folder if you like to run this test.</p></li>
 </ul>
 <p><strong>Test 3: Maxwell Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span></strong></p>
 <p>Besides electrostatics we can also solve boundary value problems from electromagnetics. The relevant trace spaces are <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\)</span>, and its dual, <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span>. NG-BEM offers finite element spaces for both trace spaces.</p>
@@ -635,148 +460,14 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. The mesh is approximated with curvilinear elements of order <span class="math notranslate nohighlight">\(4\)</span>. As the exact solution for Mie-scattering kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.</p>
-<p>The following table contains the numerical results of our convergence test.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>mesh size</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-<th class="head text-center"><p>ndofs</p></th>
-<th class="head text-center"><p>error</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=0\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=1\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=3\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(p=4\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>188</p></td>
-<td class="text-center"><p>282</p></td>
-<td class="text-center"><p>7.72e-01</p></td>
-<td class="text-center"><p>564</p></td>
-<td class="text-center"><p>1.27e-01</p></td>
-<td class="text-center"><p>1410</p></td>
-<td class="text-center"><p>2.01e-02</p></td>
-<td class="text-center"><p>2632</p></td>
-<td class="text-center"><p>1.15e-03</p></td>
-<td class="text-center"><p>4230</p></td>
-<td class="text-center"><p>3.56e-04</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>722</p></td>
-<td class="text-center"><p>1083</p></td>
-<td class="text-center"><p>3.54e-01</p></td>
-<td class="text-center"><p>2166</p></td>
-<td class="text-center"><p>3.19e-02</p></td>
-<td class="text-center"><p>5415</p></td>
-<td class="text-center"><p>2.49e-03</p></td>
-<td class="text-center"><p>10108</p></td>
-<td class="text-center"><p>7.34e-05</p></td>
-<td class="text-center"><p>16245</p></td>
-<td class="text-center"><p>1.17e-05</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>1620</p></td>
-<td class="text-center"><p>2430</p></td>
-<td class="text-center"><p>2.36e-01</p></td>
-<td class="text-center"><p>4860</p></td>
-<td class="text-center"><p>1.42e-02</p></td>
-<td class="text-center"><p>12150</p></td>
-<td class="text-center"><p>7.14e-04</p></td>
-<td class="text-center"><p>22680</p></td>
-<td class="text-center"><p>1.33e-05</p></td>
-<td class="text-center"><p>36450</p></td>
-<td class="text-center"><p>1.39e-06</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>2804</p></td>
-<td class="text-center"><p>4206</p></td>
-<td class="text-center"><p>1.79e-01</p></td>
-<td class="text-center"><p>8412</p></td>
-<td class="text-center"><p>8.09e-03</p></td>
-<td class="text-center"><p>21030</p></td>
-<td class="text-center"><p>3.14e-04</p></td>
-<td class="text-center"><p>39256</p></td>
-<td class="text-center"><p>3.93e-06</p></td>
-<td class="text-center"><p>63180</p></td>
-<td class="text-center"><p>3.64e-07</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Using the NG-BEM solver we compute the Neumann data <span class="math notranslate nohighlight">\(\gamma_N \boldsymbol E \in \boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span> for varying orders of approximation <span class="math notranslate nohighlight">\(p\)</span>. The following diagram shows the <span class="math notranslate nohighlight">\(L_2\)</span>-error of the approximated Neumann data as function of the number of degrees of freedom for <span class="math notranslate nohighlight">\(p=0,...,4\)</span>:</p>
-<p><img alt="" src="../_images/plot_Maxwell_Mie.png" /></p>
+<p>Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. The mesh is approximated with curvilinear elements of order <span class="math notranslate nohighlight">\(4\)</span>. As the exact solution for Mie-scattering kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:</p>
+<p><img alt="" src="../_images/maxwell_mie_accuracy.png" /></p>
 <p><strong>Notes:</strong></p>
 <ul class="simple">
 <li><p>The Mie series solves the scattering at the sphere. A high order mesh is required to obtain high order convergence at least if the traces are approximated with <span class="math notranslate nohighlight">\(p&gt;2\)</span>.</p></li>
 <li><p>For approximation order <span class="math notranslate nohighlight">\(p=0\)</span> the linear edge element functions are used, i.e., for a discretisation of trace space <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span> those funcitons are called Rao-Wilton-Glisson functions (RWG).</p></li>
-<li><p>Check out the repository’s test folder if you like to run this test.</p></li>
+<li><p>Check out the repository’s <code class="docutils literal notranslate"><span class="pre">convergence_timing</span></code> folder if you like to run this test.</p></li>
 </ul>
-<p><strong>Test 4: Represenation formula for electrostatic potential in <span class="math notranslate nohighlight">\(H^{1}(\Omega)\)</span></strong>
-Given complete Cauchy data <span class="math notranslate nohighlight">\(u_0 \in H^{\frac12}(\Gamma)\)</span> and <span class="math notranslate nohighlight">\(u_1 \in H^{-\frac12}(\Gamma)\)</span>, the solution <span class="math notranslate nohighlight">\(u\)</span> of the boundary value problem</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_0 u &amp;=&amp; u_0, \quad &amp; \mathrm{on} \, \Gamma_0\,,\\ \gamma_1 u &amp;=&amp; u_1, \quad &amp; \mathrm{on} \, \Gamma_1\,, \end{array}\end{split}\]</div>
-<p>is given by the represenation formula</p>
-<div class="math notranslate nohighlight">
-\[u(x) = \int\limits_{\Gamma} G(x-y)\,u_1(y) \, \mathrm{d}\sigma_y - \int\limits_{\Gamma} \langle n(y), \nabla_y G(x-y) \rangle \, u_0(y) \, \mathrm{d} \sigma_y\,.\]</div>
-<p>In order to illustrate the high accuracy of the high order BEM, we evaluate the representation formula for numerically computed Cauchy data. In our test setting <span class="math notranslate nohighlight">\(\Omega\)</span> is again the unit ball and <span class="math notranslate nohighlight">\(u\)</span> is evaluated on a rectangular screen placed inside the ball, i.e.,</p>
-<p><img alt="" src="../_images/BEM_Screen.png" /></p>
-<p>The following table contains the numerical results of our convergence test. Note that <span class="math notranslate nohighlight">\(p\)</span> denotes the order of approximation taken for the Dirichlet trace. The order of approximation of the Neumann trace is then <span class="math notranslate nohighlight">\(p-1\)</span>.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>mesh size</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span>-error</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span>-error</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span>-error</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(L_2\)</span>-error</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
-<td class="text-center"><p>for <span class="math notranslate nohighlight">\(p=1\)</span></p></td>
-<td class="text-center"><p>for <span class="math notranslate nohighlight">\(p=2\)</span></p></td>
-<td class="text-center"><p>for <span class="math notranslate nohighlight">\(p=3\)</span></p></td>
-<td class="text-center"><p>for <span class="math notranslate nohighlight">\(p=4\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-<td class="text-center"><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -809,6 +500,24 @@ Given complete Cauchy data <span class="math notranslate nohighlight">\(u_0 \in 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Maxwell_Formulations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">BIE for Maxwell</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../demos/Laplace_DtN_indirect.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dirichlet Laplace Indirect Method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

@@ -36,5 +36,5 @@ Cell [0;32mIn[6], line 3[0m
 [0;31mTypeError[0m: __call__(): incompatible function arguments. The following argument types are supported:
     1. (self: ngsolve.comp.DifferentialSymbol, definedon: Optional[Union[ngsolve.comp.Region, str]] = None, element_boundary: bool = False, element_vb: ngsolve.comp.VorB = <VorB.VOL: 0>, skeleton: bool = False, bonus_intorder: int = 0, intrules: dict[ngsolve.fem.ET, ngsolve.fem.IntegrationRule] = {}, deformation: ngsolve.comp.GridFunction = None, definedonelements: pyngcore.pyngcore.BitArray = None) -> ngsolve.comp.DifferentialSymbol
 
-Invoked with: <ngsolve.comp.DifferentialSymbol object at 0x7e6f50643030>; kwargs: bounus_intorder=6
+Invoked with: <ngsolve.comp.DifferentialSymbol object at 0x7b07e1545a70>; kwargs: bounus_intorder=6
 
