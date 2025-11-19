@@ -1,4 +1,4 @@
-Boundary Integral Equations for Helmholtz
+BIE for Helmholtz
 =============================
 
 **Notations of trace operators:**
@@ -14,47 +14,29 @@ $$ \begin{array}{r rcl l} \textnormal{Dirichlet trace} \quad & \gamma_0 u &\in& 
 
 Let $u$ denote the acoustic potential which is caused by Dirichlet boundary condition on $\Gamma$ and propagates in $\Omega^c \in \mathbb R^3$. Thus, $u$ solves the exterior boundary value problem 
 
-|  |  |  |
-| -|--|- |
-|$$ \left\{ \begin{array}{rcl l} -\Delta u - \kappa^2 u &=& 0\,, \quad & \Omega^c \subset \mathbb R^3\,, \\ \gamma_0 u &=& u_0\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $$ | $\quad\quad\quad$  | ![](demos/resources/BEM_exterior.png)  |
+|  |  |
+| -|--|
+|$$ \left\{ \begin{array}{rcl l} \Delta u + \kappa^2 u &=& 0\,, \quad & \Omega^c \subset \mathbb R^3\,, \\ \gamma_0 u &=& u_0\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $$ | ![](resources/BEM_exterior.png)  |
  
-From here we can choose an direct or an indirect ansatz.  
 
-$$ \begin{array}{ll rcl } 1. & \underline{\textnormal{Direct ansatz (Dirichlet to Neumann map)}} &&& \\ 
+
+To stabilize interior eigenvalues, one consideres a combined field integral equation. The combinded field integral equation combines single and double layer integral operators, one option is the Brakhage-Werner formulation: 
+
+$$ \begin{array}{ll rcl } & \underline{\textnormal{Brackhage Werner}} &&& \\ 
 &&&&\\ 
-&\textnormal{ansatz} & u(x) &=& \underbrace{ \displaystyle{\int\limits_\Gamma} \frac{1}{4\,\pi}\, \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|}  \, u_1(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{ SL}(u_1) }} - \underbrace{ \displaystyle{\int\limits_\Gamma} \displaystyle{ \frac{1}{4\,\pi}\, \left\langle n(y) , \nabla \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|} \right\rangle  \, u_0(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{DL}(u_0) }} \\ 
+&\textnormal{ansatz} & u(x) &=& i \, \kappa \, \underbrace{ \displaystyle{\int\limits_\Gamma} \frac{1}{4\,\pi}\, \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|}  \, j(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{ SL}(j) }} - \underbrace{ \displaystyle{\int\limits_\Gamma} \displaystyle{ \frac{1}{4\,\pi}\, \left\langle n(y) , \nabla \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|} \right\rangle  \, j(y)\, \mathrm{d}\sigma_y }}_{\displaystyle{ \mathrm{DL}(j) }} \\ 
 &&&&\\   
-&\textnormal{variational formulation }  &  \left\langle \gamma_0 \left(\mathrm{SL}(u_1)\right), v \right\rangle_{-\frac12} &=& \left\langle u_0, v\right\rangle_{-\frac12} + \left\langle \gamma_0 \left(\mathrm{DL}(u_0)\right), v\right\rangle_{-\frac12}, \quad v\in H^{-\frac12}(\Gamma) \\ 
-&&&& \\ & \textnormal{discretisation} & \mathrm{V} \, \mathrm{u}_1 &=& \left( \frac12 \,\mathrm{M} + \mathrm{K} \right) \, \mathrm{u}_0 \\ 
-&&&& \\ 
-2. & \underline{\textnormal{Indirect ansatz}} &&& \\ 
-&&&& \\
-& \textnormal{ansatz} & u(x) &=&  \underbrace{ \displaystyle{\int\limits_\Gamma}} \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{ i\kappa \|x-y\|} }{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y }_{\displaystyle{ \mathrm{SL}(j) } } \\ 
-&&&&\\
-&\textnormal{variational formulation }  & \left\langle \gamma_0 \left(\mathrm{SL}(j)\right), v \right\rangle_{-\frac12} &=& \left\langle u_0, v\right\rangle_{-\frac12},\quad   v\in H^{-\frac12}(\Gamma) \\ 
-&&&&\\ 
-\\ & \textnormal{discretisation} & \mathrm{V} \, \mathbf{j} &=& \mathrm{M} \,\mathbf{u}_0  \end{array} $$ 
+&\textnormal{variational formulation }  &  \left\langle \gamma_0 u , v \right\rangle_{-\frac12} &=& i \, \kappa \, \left\langle \gamma_0 \left(\mathrm{SL}(j)\right), v \right\rangle_{-\frac12} - \left\langle \gamma_0 \left(\mathrm{DL}(j)\right), v\right\rangle_{-\frac12}, \quad v\in H^{-\frac12}(\Gamma) \\ 
+&&&& \\ & \textnormal{discretisation} & \left( \frac12 \, \mathrm M + i \, \kappa \,\mathrm{V} + \mathrm K\right) \, \mathrm{j} &=& \mathrm{M} \, \mathrm{u}_0 
+ \end{array} $$ 
 
+The single layer and double layer operator are defined using the fundamental solution of the Helmholtz operator,
 
-#### Helmholtz equation with Neumann Condition
+$$
+G(x,y) = \frac{e^{i\kappa \|x-y\|}}{4\pi\,\|x-y\|}.
+$$
 
-Consider the corresponding Neumann boundary condition where $u$ is the unique solution of the exterior boundary value problem (note the marginal difference in the given trace compared to the above stated problem)
-
-|  |  |  |
-| -|--|- |
-|$$ \left\{ \begin{array}{rcl l} -\Delta u - \kappa u &=& 0\,, \quad & \Omega^c \subset \mathbb R^3\,, \\ \gamma_1 u &=& u_1\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $$ | $\quad\quad\quad$  | ![](demos/resources/BEM_exterior.png)  |
-
-
-From here we can choose an direct or an indirect ansatz: 
-
-
-$$ \begin{array}{ll rcl } 1. & \underline{\textnormal{Direct ansatz (Neumann to Dirichlet map)}} & && \\ &&&&\\ &\textnormal{ansatz} & u(x) &=&  \underbrace{ \displaystyle{\int\limits_\Gamma} \frac{1}{4\,\pi}\, \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|}  \, u_1(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{ SL}(u_1) }} - \underbrace{ \displaystyle{\int\limits_\Gamma} \displaystyle{ \frac{1}{4\,\pi}\, \left\langle n(y) , \nabla \frac{ e^{i\kappa \|x-y\|} }{\| x-y\|} \right\rangle  \, u_0(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{DL}(u_0) }} \\ &&&&\\   
-&\textnormal{variational formulation }  &  \left\langle v, \gamma_1 \left(\mathrm{DL}(u_0)\right) \right\rangle_{-\frac12}  &=& \left\langle u_1, v\right\rangle_{-\frac12} - \left\langle v, \gamma_1 \left(\mathrm{SL}(u_1)\right) \right\rangle_{-\frac12}, \quad v\in H^{\frac12}(\Gamma) \\ &&&& \\ & \textnormal{discretisation} & \left( \mathrm{D} + \mathrm{S}\right) \mathrm{u}_0 &=& \left( \frac12 \mathrm{M} - \mathrm{K}^\intercal\right) \, \mathrm{u}_1 \\ &&&& \\ 2. & \underline{\textnormal{Indirect ansatz}} &&& \\ &&&& \\
-& \textnormal{ansatz} & u(x) &=&  \underbrace{ \displaystyle{\int\limits_\Gamma} \displaystyle{\frac{1}{4\,\pi}\,  \left\langle n(y), \frac{e^{i\kappa \| x-y \|}}{\| x-y\|} \right\rangle } \, m(y)\, \mathrm{d}\sigma_y}_{\displaystyle{ \mathrm{DL}(m) }} \\ &&&\\
-&\textnormal{variational formulation }  & \left\langle v, \gamma_1 \left(\mathrm{DL}(m)\right) \right\rangle_{-\frac12} &=& \left\langle u_1, v\right\rangle_{-\frac12}, \quad v \in H^{\frac12}(\Gamma) \\ &&&\\ 
- \\ & \textnormal{discretisation} & \left( \mathrm{D} + S\right) \, \mathrm{m} &=&  \mathrm{M}\,\mathrm{u}_1  \end{array} $$ 
-
-
+The layer potentials have the same form as in the Laplace case, except that the Laplace kernel is replaced by the Helmholtz kernel $G$.
 
 #### NG-BEM Python Functions 
 

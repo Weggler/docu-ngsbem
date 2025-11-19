@@ -30,9 +30,9 @@ $$ \begin{array}{r rcl} \textnormal{single layer potential:} \; \mathrm{SL}\left
 
 Let $u$ denote the electrostatic potential that arises under given Dirichlet boundary condition inside a source-free domain $\Omega \in \mathbb R^3$. Thus, $u$ solves the interior boundary value problem 
 
-|  |  |  |
-| -|--|- |
-|$ \left\{ \begin{array}{rcl l} \Delta u &=& 0\,, \quad & \Omega \subset \mathbb R^3\,, \\ \gamma_0 u &=& u_0\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $ | $\quad\quad\quad$  | ![](resources/BEM_interior.png)  |
+|  |  |
+| -|--|
+|$ \left\{ \begin{array}{rcl l} \Delta u &=& 0\,, \quad & \Omega \subset \mathbb R^3\,, \\ \gamma_0 u &=& u_0\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $ |  ![](resources/BEM_interior.png)  |
  
 
 From here we can choose an direct or an indirect ansatz.  
@@ -56,9 +56,9 @@ $$ \begin{array}{r rcl }
 
 Let $u$ denote the electrostatic potential that arises under given Neumann boundary condition inside a source-free domain $\Omega \in \mathbb R^3$. Thus, $u$ solves the boundary value problem
 
-|  |  |  |
-| -|--|- |
-|$ \left\{ \begin{array}{rcl l} \Delta u &=& 0\,, \quad & \Omega \subset \mathbb R^3\,, \\ \gamma_1 u &=& u_1\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $ | $\quad\quad\quad$  | ![](resources/BEM_interior.png)  |
+|  |  |
+| -|--|
+|$ \left\{ \begin{array}{rcl l} \Delta u &=& 0\,, \quad & \Omega \subset \mathbb R^3\,, \\ \gamma_1 u &=& u_1\,, \quad & \Gamma = \partial \Omega\,. \end{array} \right. $ |  ![](resources/BEM_interior.png)  |
 
 
 From here we can choose an direct or an indirect ansatz. 

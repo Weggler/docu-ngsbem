@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -180,6 +180,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/why_bem.html">Boundary Element Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Laplace_Formulations.html">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Helmholtz_Formulations.html">BIE for Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Maxwell_Formulations.html">BIE for Maxwell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/ho_cvg.html">Convergence Rates</a></li>
 </ul>
@@ -192,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
@@ -403,10 +406,7 @@ document.write(`
 </ul>
 <p>NGSBem supports high order function spaces on curved surface meshes.
 It uses numerical integration following [Sauter-Schwab: Boundary Element Methods, 2009], and matrix compression and potential evalution based on the Fast Multipole Method  [Rokhlin, Greengard, Rapid Solution of Integral Equations of Classic Potential Theory, 1985].</p>
-<p>Installation:</p>
-<ul class="simple">
-<li><p>Install a recent NGSolve (later than August 25, 2025)</p></li>
-</ul>
+<p>Installation: install a recent NGSolve (later than November 19, 2025)</p>
 <p>Try notebooks from the demos folder.
 You can read (only read) them directly on github: <a class="github reference external" href="https://github.com/Weggler/docu-ngsbem">Weggler/docu-ngsbem</a></p>
 <div class="toctree-wrapper compound">
@@ -414,6 +414,7 @@ You can read (only read) them directly on github: <a class="github reference ext
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/why_bem.html">Boundary Element Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Laplace_Formulations.html">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Helmholtz_Formulations.html">BIE for Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/Maxwell_Formulations.html">BIE for Maxwell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="short_and_sweet/ho_cvg.html">Convergence Rates</a></li>
 </ul>
@@ -428,6 +429,8 @@ You can read (only read) them directly on github: <a class="github reference ext
 <li class="toctree-l1"><a class="reference internal" href="demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos/Helmholtz_Brakhage_Werner.html#postprocessing-on-screen">Postprocessing on screen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>

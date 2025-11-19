@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'short_and_sweet/Laplace_Formulations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BIE for Maxwell" href="Maxwell_Formulations.html" />
+    <link rel="next" title="BIE for Helmholtz" href="Helmholtz_Formulations.html" />
     <link rel="prev" title="Boundary Element Method" href="why_bem.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,12 +179,24 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="why_bem.html">Boundary Element Method</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Helmholtz_Formulations.html">BIE for Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Maxwell_Formulations.html">BIE for Maxwell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ho_cvg.html">Convergence Rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_direct.html">Dirichlet Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_indirect.html">Neumann Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_direct.html">Neumann Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
 </ul>
 
     </div>
@@ -426,12 +438,10 @@ document.write(`
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
-<th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0\,, \quad &amp; \Omega \subset \mathbb R^3\,, \\ \gamma_0 u &amp;=&amp; u_0\,, \quad &amp; \Gamma = \partial \Omega\,. \end{array} \right. \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\quad\quad\quad\)</span></p></td>
 <td><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
 </tr>
 </tbody>
@@ -458,12 +468,10 @@ document.write(`
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
-<th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0\,, \quad &amp; \Omega \subset \mathbb R^3\,, \\ \gamma_1 u &amp;=&amp; u_1\,, \quad &amp; \Gamma = \partial \Omega\,. \end{array} \right. \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\quad\quad\quad\)</span></p></td>
 <td><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
 </tr>
 </tbody>
@@ -597,11 +605,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="Maxwell_Formulations.html"
+       href="Helmholtz_Formulations.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BIE for Maxwell</p>
+        <p class="prev-next-title">BIE for Helmholtz</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

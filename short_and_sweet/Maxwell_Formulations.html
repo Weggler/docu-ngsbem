@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Convergence Rates" href="ho_cvg.html" />
-    <link rel="prev" title="BIE for Laplace" href="Laplace_Formulations.html" />
+    <link rel="prev" title="BIE for Helmholtz" href="Helmholtz_Formulations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,12 +179,24 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="why_bem.html">Boundary Element Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Laplace_Formulations.html">BIE for Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Helmholtz_Formulations.html">BIE for Helmholtz</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BIE for Maxwell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ho_cvg.html">Convergence Rates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_direct.html">Dirichlet Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_indirect.html">Neumann Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_direct.html">Neumann Laplace Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
 </ul>
 
     </div>
@@ -436,12 +448,10 @@ document.write(`
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
-<th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\left\{ \begin{array}{rcl l} \mathbf{curl} \, \mathbf{curl}\, \boldsymbol E - \kappa^2 \, \boldsymbol E &amp;=&amp; \boldsymbol 0, \quad &amp;\textnormal{in } \Omega^c \subset \mathbb R^3\,,\\ \gamma_R \,\boldsymbol E &amp;=&amp; \boldsymbol m, \quad &amp; \textnormal{on }\Gamma \\ \left| \mathbf{curl} \, \boldsymbol E( x) - i\,\omega\,\epsilon \, \boldsymbol E( x)\right| &amp;=&amp; \mathcal O\left( \displaystyle \frac{1}{| x|^2}\right), &amp;\textnormal{for} \; |x| \to \infty\,.\end{array} \right. \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\quad\quad\quad\)</span></p></td>
 <td><p><img alt="" src="../_images/BEM_exterior.png" /></p></td>
 </tr>
 </tbody>
@@ -473,12 +483,10 @@ document.write(`
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
-<th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \left\{ \begin{array}{rcl l} \mathbf{curl} \, \mathbf{curl}\, \boldsymbol H - \kappa^2 \, \boldsymbol H &amp;=&amp; \boldsymbol 0, \quad &amp;\textnormal{in } \Omega^c \subset \mathbb R^3\,,\\ \gamma_N \,\boldsymbol H &amp;=&amp; -\dfrac{i\omega\varepsilon}{\kappa} \, \boldsymbol n\times \boldsymbol m, \quad &amp; \textnormal{on }\Gamma \\[1ex] \left| \mathbf{curl} \, \boldsymbol H( x) + i\,\omega\,\mu \, \boldsymbol H( x)\right| &amp;=&amp; \mathcal O\left( \displaystyle \frac{1}{| x|^2}\right), &amp;\textnormal{for} \; |x| \to \infty\end{array} \right. \)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\quad\quad\quad\)</span></p></td>
 <td><p><img alt="" src="../_images/BEM_exterior.png" /></p></td>
 </tr>
 </tbody>
@@ -637,12 +645,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Laplace_Formulations.html"
+       href="Helmholtz_Formulations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">BIE for Laplace</p>
+        <p class="prev-next-title">BIE for Helmholtz</p>
       </div>
     </a>
     <a class="right-next"

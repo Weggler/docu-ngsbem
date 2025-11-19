@@ -12,9 +12,7 @@ NGSBem supports high order function spaces on curved surface meshes.
 It uses numerical integration following [Sauter-Schwab: Boundary Element Methods, 2009], and matrix compression and potential evalution based on the Fast Multipole Method  [Rokhlin, Greengard, Rapid Solution of Integral Equations of Classic Potential Theory, 1985].
 
 
-Installation:
-
-* Install a recent NGSolve (later than August 25, 2025)
+Installation: install a recent NGSolve (later than November 19, 2025)
 
 Try notebooks from the demos folder.
 You can read (only read) them directly on github: https://github.com/Weggler/docu-ngsbem
@@ -22,4 +20,3 @@ You can read (only read) them directly on github: https://github.com/Weggler/doc
 
 ```{tableofcontents}
 ```
-
