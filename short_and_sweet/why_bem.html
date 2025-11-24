@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'short_and_sweet/why_bem';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BIE for Laplace" href="Laplace_Formulations.html" />
+    <link rel="next" title="Convergence Rates" href="ho_cvg.html" />
     <link rel="prev" title="Welcome to NGSBEM" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,25 +176,29 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Boundary Element Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Laplace_Formulations.html">BIE for Laplace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Helmholtz_Formulations.html">BIE for Helmholtz</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maxwell_Formulations.html">BIE for Maxwell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ho_cvg.html">Convergence Rates</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Detailed Demos</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_direct.html">Dirichlet Laplace Direct Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_indirect.html">Neumann Laplace Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_direct.html">Neumann Laplace Direct Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../demos/BEM_Laplace_Capacitor.html">BEM Laplace Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/BEM_Laplace_Capacitor.html">Laplace BEM Plate Capacitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/BEM_Layer_Potentials.html">Layer Potentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Laplace_Formulations.html">Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Helmholtz_Formulations.html">Helmholtz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Maxwell_Formulations.html">Maxwell</a></li>
 </ul>
 
     </div>
@@ -405,7 +409,7 @@ document.write(`
 </ul>
 <p><strong>How to derive a BEM from a standard BEM problem?</strong></p>
 <ol class="arabic simple">
-<li><p>choose an ansatz for the solution of the pde in terms of layer potentials</p></li>
+<li><p>choose an ansatz for the solution of the pde in terms of so called layer potentials</p></li>
 <li><p>derive a boundary integral equation for unknown density</p></li>
 <li><p>discretize the resulting variational formulation with finite element spaces on the boundary</p></li>
 <li><p>solve the system of linear equations and get the best approximation of the unknown density</p></li>
@@ -476,11 +480,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="Laplace_Formulations.html"
+       href="ho_cvg.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BIE for Laplace</p>
+        <p class="prev-next-title">Convergence Rates</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -13,7 +13,7 @@ One of the following pdes with given boundary condition:
 
 **How to derive a BEM from a standard BEM problem?**
 
-1. choose an ansatz for the solution of the pde in terms of layer potentials
+1. choose an ansatz for the solution of the pde in terms of so called layer potentials
 2. derive a boundary integral equation for unknown density
 3. discretize the resulting variational formulation with finite element spaces on the boundary 
 4. solve the system of linear equations and get the best approximation of the unknown density
