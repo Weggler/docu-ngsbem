@@ -3,8 +3,8 @@ Laplace
 
 #### Layer Potentials
 
-$$ \begin{array}{r rcl} \textnormal{single layer potential:} \; \mathrm{SL}\left( j \right) (x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{1}{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y } \\ 
- \textnormal{double layer potential:} \; \mathrm{DL}\left(m \right)(x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{ \langle n(y), x-y \rangle }{\| x-y\|^3} } \, m(y)\, \mathrm{d}\sigma_y }
+$$ \begin{array}{r rcl} \mathrm{SL}\left( j \right) (\boldsymbol x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{1}{\| \boldsymbol x- \boldsymbol y\|} } \, j(\boldsymbol y)\, \mathrm{d}\sigma_y } \\ 
+ \mathrm{DL}\left(m \right)(\boldsymbol x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{ \langle \boldsymbol n_y, \boldsymbol x- \boldsymbol y \rangle }{\| \boldsymbol x- \boldsymbol y\|^3} } \, m(\boldsymbol y)\, \mathrm{d}\sigma_y }
 \end{array}$$
 
 #### Laplace Dirichlet BVP
@@ -46,16 +46,16 @@ From here we can choose an direct or an indirect ansatz.
 
 $$ \begin{array}{r rcl }  
 \textnormal{ansatz} & u &=& \mathrm{SL}(j) - \mathrm{DL}(m) \\
-\textnormal{variational formulation }  & \forall v\in H^{\frac12}(\Gamma): \, \big\langle v, \gamma_1 \left(\mathrm{DL}(m)\right) \big\rangle_{-\frac12}  &=& \big\langle m, v\big\rangle_{-\frac12} - \big\langle v, \gamma_1 \left(\mathrm{SL}(j)\right) \big\rangle_{-\frac12} \\ 
-\textnormal{discretisation} & \left( \mathrm{D} + \mathrm{S}\right) \mathrm{m} &=& \left( \frac12 \mathrm{M} - \mathrm{K}^\intercal\right) \, \mathrm{j}  
+\textnormal{variational formulation }  & \forall v\in H^{\frac12}(\Gamma): \, \big\langle v, \gamma_1 \left(\mathrm{DL}(m)\right) \big\rangle_{-\frac12}  &=& \big\langle v, j\big\rangle_{-\frac12} - \big\langle v, \gamma_1 \left(\mathrm{SL}(j)\right) \big\rangle_{-\frac12} \\ 
+\textnormal{discretisation} & \left( \mathrm{D} + \mathrm{S}\right) \mathrm{m} &=& \left( \frac12 \mathrm{M} - \mathrm{K}' \right) \, \mathrm{j}  
 \end{array} $$ 
 
 **2. Indirect Ansatz** 
 
 $$ \begin{array}{r rcl }  
 \textnormal{ansatz} & u &=&  \mathrm{DL}(m) \\
-\textnormal{variational formulation } & \forall \quad v\in H^{\frac12}(\Gamma):\, \big\langle v, \gamma_1 \left(\mathrm{DL}(m)\right) \big\rangle_{-\frac12} &=& \big\langle u_1, v\big\rangle_{-\frac12} \\ 
-\textnormal{discretisation} & \left( \mathrm{D} + S\right) \, \mathrm{m} &=&  \mathrm{M}\,\mathrm{j}  
+\textnormal{variational formulation } & \forall \quad v\in H^{\frac12}(\Gamma):\, \big\langle v, \gamma_1 \left(\mathrm{DL}(m)\right) \big\rangle_{-\frac12} &=& -\big\langle v, j\big\rangle_{-\frac12} \\ 
+\textnormal{discretisation} & \left( \mathrm{D} + \mathrm S\right) \, \mathrm{m} &=&  -\mathrm{M}\,\mathrm{j}  
 \end{array} $$ 
 
 

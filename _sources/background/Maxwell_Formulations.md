@@ -4,8 +4,8 @@ Maxwell
 #### Layer Potentials
 
 $$ \begin{array}{rcl} 
-\mathrm{SL}(\boldsymbol j) &=& \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} \, \boldsymbol j(y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(y)\, \mathrm{d}\sigma_y } \\
-\mathrm{DL}(\boldsymbol n \times \boldsymbol m)  &=& \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} } \, \boldsymbol n(y) \times \boldsymbol{m}(y)\, \mathrm{d}\sigma_y }\end{array}
+\mathrm{SL}\big(\boldsymbol j\big)(\boldsymbol x) &=& \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|} \, \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y } \\
+\mathrm{DL}\big(\boldsymbol n \times \boldsymbol m\big)(\boldsymbol x)  &=& \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|} } \, \boldsymbol n(\boldsymbol y) \times \boldsymbol{m}(\boldsymbol y)\, \mathrm{d}\sigma_y }\end{array}
 $$ 
 
 

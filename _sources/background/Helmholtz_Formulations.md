@@ -12,8 +12,8 @@ $$ \begin{array}{r rcl l} \textnormal{Dirichlet trace} \quad & \gamma_0 u &\in& 
 -->
 #### Layer Potentials
 
-$$ \begin{array}{rcl} \mathrm{SL}\left( j \right) (x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, |x-y|} }{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y } \\ 
- \mathrm{DL}\left(m \right)(x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \displaystyle{ n_y \cdot \nabla_y }\displaystyle{ \frac{ e^{i\,\kappa\,\|x-y\|}}{\| x-y\|}} } \, m(y)\, \mathrm{d}\sigma_y }
+$$ \begin{array}{rcl} \mathrm{SL}\left( j \right) (\boldsymbol x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, |\boldsymbol x-\boldsymbol y|} }{\| \boldsymbol x-\boldsymbol y\|} } \, j(\boldsymbol y)\, \mathrm{d}\sigma_y } \\ 
+ \mathrm{DL}\left(m \right)(\boldsymbol x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \displaystyle{ \boldsymbol n_y \cdot \nabla_y }\displaystyle{ \frac{ e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|}} } \, m(\boldsymbol y)\, \mathrm{d}\sigma_y }
 \end{array}$$
 
 

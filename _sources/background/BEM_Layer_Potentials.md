@@ -3,22 +3,22 @@ Layer Potentials
 
 **Laplace**
 
-$$ \begin{array}{r rcl} \mathrm{SL}\left( j \right) (x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{1}{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y }\,, \quad j \in H^{-\frac12}(\Gamma) \\ 
- \mathrm{LaplaceDL}\left(m \right)(x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{ \langle n(y), x-y \rangle }{\| x-y\|^3} } \, m(y)\, \mathrm{d}\sigma_y }\,,\quad m \in H^{\frac12}(\Gamma)
+$$ \begin{array}{r rcl} \mathrm{SL}\left( j \right) (\boldsymbol x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{1}{\| \boldsymbol x- \boldsymbol y\|} } \, j(\boldsymbol y)\, \mathrm{d}\sigma_y }\,, \quad j \in H^{-\frac12}(\Gamma) \\ 
+ \mathrm{DL}\left(m \right)(\boldsymbol x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{ \langle \boldsymbol n_y, \boldsymbol x-\boldsymbol y \rangle }{\| \boldsymbol x- \boldsymbol y\|^3} } \, m(\boldsymbol y)\, \mathrm{d}\sigma_y }\,,\quad m \in H^{\frac12}(\Gamma)
 \end{array}$$
 
 **Helmholtz** 
 
-$$ \begin{array}{r rcl} \mathrm{SL}\left( j \right) (x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, |x-y|} }{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y }, \,, \quad j\in H^{-\frac12}(\Gamma) \\ 
- \mathrm{DL}\left(m \right)(x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, e^{i\,\kappa\,|x-y|} \, \left( i\,\kappa \, |x-y| -1\right)\, \frac{ \langle n(y), x-y \rangle }{\| x-y\|^3} } \, m(y)\, \mathrm{d}\sigma_y }\,,\quad  m \in H^{\frac12}(\Gamma)
+$$ \begin{array}{r rcl} \mathrm{SL}\left( j \right) (\boldsymbol x) &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, \|\boldsymbol x-\boldsymbol y\|} }{\| \boldsymbol x- \boldsymbol y\|} } \, j(\boldsymbol y)\, \mathrm{d}\sigma_y }, \,, \quad j\in H^{-\frac12}(\Gamma) \\ 
+ \mathrm{DL}\left(m \right)(\boldsymbol x)  &=& \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y|} \, \left( i\,\kappa \, \|\boldsymbol x-\boldsymbol y\| -1\right)\, \frac{ \langle \boldsymbol n_y, \boldsymbol x- \boldsymbol y \rangle }{\| \boldsymbol x- \boldsymbol y\|^3} } \, m(\boldsymbol y)\, \mathrm{d}\sigma_y }\,,\quad  m \in H^{\frac12}(\Gamma)
 \end{array}$$
 
 
 **Maxwell**
 
 $$ \begin{array}{rcl} 
-\mathrm{SL}(\boldsymbol j) &=& \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} \, \boldsymbol j(y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(y)\, \mathrm{d}\sigma_y }\,,\quad j\in H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma) \\
-\mathrm{DL}(\boldsymbol n \times \boldsymbol m)  &=& \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} } \, \boldsymbol n(y) \times \boldsymbol{m}(y)\, \mathrm{d}\sigma_y }\,, \quad  m \in H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\end{array}
+\mathrm{SL}\big(\boldsymbol j\big)(\boldsymbol x) &=& \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x- \boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|} \, \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|\boldsymbol x- \boldsymbol y\|}}{\| \boldsymbol x - \boldsymbol y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y }\,,\quad \boldsymbol j\in H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma) \\
+\mathrm{DL}\big(\boldsymbol n \times \boldsymbol m\big)(\boldsymbol x)  &=& \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x- \boldsymbol y\|} } \, \boldsymbol n_y \times \boldsymbol{m}(\boldsymbol y)\, \mathrm{d}\sigma_y }\,, \quad  \boldsymbol m \in H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\end{array}
 $$ 
 
 **Trace Operators**

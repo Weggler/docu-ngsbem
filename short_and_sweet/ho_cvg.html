@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -201,6 +201,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../background/Laplace_Formulations.html">Laplace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/Helmholtz_Formulations.html">Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/Maxwell_Formulations.html">Maxwell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -400,13 +404,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convergence-rates">
 <h1>Convergence Rates<a class="headerlink" href="#convergence-rates" title="Link to this heading">#</a></h1>
-<p>NG-BEM implements high order boundary element methods. The accuracy of the method depends on the order of the finite element spaces involved. On this page some numerical results of NG-BEM are presented:</p>
+<p>NGSBEM implements high order boundary element methods. The accuracy of the method depends on the order of the finite element spaces involved. On this page some numerical results of NGSBEM are presented:</p>
 <ol class="arabic simple">
 <li><p>Analytically solvable problems with an unkown in one of the following trace spaces are considered</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[ H^{\frac12}(\Gamma), \quad \boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma) \quad \textnormal{and} \quad H^{-\frac12}(\Gamma)\,.\]</div>
-<p>The unkown trace is computed by NG-BEM for different orders of approximation <span class="math notranslate nohighlight">\(p\)</span> on a sequence of subsequently refined meshes. The absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error as function of degrees of freedom is analysed and convergence rates known from theory are exemplarily verified.</p>
+<p>The unkown trace is computed by NGSBEM for different orders of approximation <span class="math notranslate nohighlight">\(p\)</span> on a sequence of subsequently refined meshes. The absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error as function of degrees of freedom is analysed and convergence rates known from theory are exemplarily verified.</p>
 <ol class="arabic simple" start="2">
 <li><p>Given a complete set of Cauchy data the solution of the pde is given by its boundary integral representation. Thus, besides traces the numerical solution of the pde depends on <span class="math notranslate nohighlight">\(p\)</span>. We consider an electrostatic potential in <span class="math notranslate nohighlight">\(H^{1}(\Omega)\)</span> as solution of the Laplacian and analyse the decrease of error with respect to varying order <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
 </ol>
@@ -417,36 +421,36 @@ document.write(`
 <p>as unique solution of the Neumann boundary value problem</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-center"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_1 u &amp;=&amp; u_1, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array}\)</span></p></td>
-<td><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_1 u &amp;=&amp; u_1, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array} \right.\quad\quad\quad\)</span></p></td>
+<td class="text-center"><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit ball and <span class="math notranslate nohighlight">\(\Gamma\)</span> the unit sphere, respectively. Using the NG-BEM solver we compute the Dirichlet data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we can compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
+<p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit ball and <span class="math notranslate nohighlight">\(\Gamma\)</span> the unit sphere, respectively. Using the NGSBEM solver we compute the Dirichlet data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we can compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
 <p><img alt="" src="../_images/laplace_NtD_accuracy.png" /></p>
 <p>Note that the Neumann problem is not uniquely solvable. They are the same up to a constant. Thus we compare here the surface gradients of the numerical and the exact solution.</p>
 <p><strong>Test 2: Laplace Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span></strong></p>
 <p>To analyse convergence rates for traces in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span> consider now the Dirichlet boundary value problem with unkonwn Neumann data, i.e.,</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-center"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_0 u &amp;=&amp; u_0, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array}\)</span></p></td>
-<td><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_0 u &amp;=&amp; u_0, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array} \right. \quad \quad\quad\)</span></p></td>
+<td class="text-center"><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Thus, again <span class="math notranslate nohighlight">\(u\)</span> from Test 1 is the unique solution of this problem. Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span>  on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
+<p>Thus, again <span class="math notranslate nohighlight">\(u\)</span> from Test 1 is the unique solution of this problem. Using the NGSBEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span>  on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
 <p><img alt="" src="../_images/laplace_DtN_accuracy.png" /></p>
 <p><strong>Common notes for Test 1 and 2:</strong></p>
 <ul class="simple">
@@ -454,23 +458,23 @@ document.write(`
 <li><p>Check out the repository’s <code class="docutils literal notranslate"><span class="pre">convergence_timing</span></code> folder if you like to run this test.</p></li>
 </ul>
 <p><strong>Test 3: Maxwell Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span></strong></p>
-<p>Besides electrostatics we can also solve boundary value problems from electromagnetics. The relevant trace spaces are <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\)</span>, and its dual, <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span>. NG-BEM offers finite element spaces for both trace spaces.</p>
+<p>Besides electrostatics we can also solve boundary value problems from electromagnetics. The relevant trace spaces are <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\)</span>, and its dual, <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span>. NGSBEM offers finite element spaces for both trace spaces.</p>
 <p>In order to verify convergence rates for high order bem, we consider the scattering of a plane wave <span class="math notranslate nohighlight">\(\boldsymbol E_{\mathrm{inc}}\)</span> at a perfect electric conducting sphere. This scattering problem is analytically solvable by so-called Mie series. In order to keep the geometrical approximation error negligible, the geometrical approximation oder is set to <span class="math notranslate nohighlight">\(4\)</span> for all tests runs.</p>
 <p>The scattered electric field <span class="math notranslate nohighlight">\(\boldsymbol E\)</span> solves the following boundary value problem:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-center"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\begin{array}{rcl l} \mathbf{\mathrm{curl}}\,\mathbf{\mathrm{curl}}\, \boldsymbol E - \kappa^2 \, \boldsymbol E&amp;=&amp; \boldsymbol 0, \quad  &amp; \mathrm{in} \, \Omega^c\,, \\ \gamma_R \boldsymbol E &amp;=&amp; \boldsymbol E_{\mathrm{inc}}, \quad &amp; \mathrm{on} \, \Gamma\,, \\ \textnormal{ + radiation  condition} &amp; &amp; &amp;|x| \to \infty\,. \end{array}\)</span></p></td>
-<td><p><img alt="" src="../_images/BEM_exterior.png" /></p></td>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\( \left\{ \begin{array}{rcl l} \mathbf{\mathrm{curl}}\,\mathbf{\mathrm{curl}}\, \boldsymbol E - \kappa^2 \, \boldsymbol E&amp;=&amp; \boldsymbol 0, \quad  &amp; \mathrm{in} \, \Omega^c\,, \\ \gamma_R \boldsymbol E &amp;=&amp; \boldsymbol E_{\mathrm{inc}}, \quad &amp; \mathrm{on} \, \Gamma\,, \\ \textnormal{ + radiation  condition} &amp; &amp; &amp;|x| \to \infty\,. \end{array} \right. \quad\quad\quad\)</span></p></td>
+<td class="text-center"><p><img alt="" src="../_images/BEM_exterior.png" /></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Using the NG-BEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. The mesh is approximated with curvilinear elements of order <span class="math notranslate nohighlight">\(4\)</span>. As the exact solution for Mie-scattering kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:</p>
+<p>Using the NGSBEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. The mesh is approximated with curvilinear elements of order <span class="math notranslate nohighlight">\(4\)</span>. As the exact solution for Mie-scattering kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:</p>
 <p><img alt="" src="../_images/maxwell_mie_accuracy.png" /></p>
 <p><strong>Notes:</strong></p>
 <ul class="simple">

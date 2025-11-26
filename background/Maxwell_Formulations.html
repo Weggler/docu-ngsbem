@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'background/Maxwell_Formulations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bibliography" href="../bibliography.html" />
     <link rel="prev" title="Helmholtz" href="Helmholtz_Formulations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -200,6 +201,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Laplace_Formulations.html">Laplace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Helmholtz_Formulations.html">Helmholtz</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Maxwell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -416,8 +421,8 @@ document.write(`
 <h2>Layer Potentials<a class="headerlink" href="#layer-potentials" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{rcl} 
-\mathrm{SL}(\boldsymbol j) &amp;=&amp; \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} \, \boldsymbol j(y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(y)\, \mathrm{d}\sigma_y } \\
-\mathrm{DL}(\boldsymbol n \times \boldsymbol m)  &amp;=&amp; \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} } \, \boldsymbol n(y) \times \boldsymbol{m}(y)\, \mathrm{d}\sigma_y }\end{array}
+\mathrm{SL}\big(\boldsymbol j\big)(\boldsymbol x) &amp;=&amp; \kappa \, \displaystyle {\int\limits_\Gamma \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|} \, \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y + \frac{1}{\kappa} \nabla \int\limits_\Gamma \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|}  \, \mathrm{div}_\Gamma \boldsymbol j(\boldsymbol y)\, \mathrm{d}\sigma_y } \\
+\mathrm{DL}\big(\boldsymbol n \times \boldsymbol m\big)(\boldsymbol x)  &amp;=&amp; \nabla \times \displaystyle {\int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|} } \, \boldsymbol n(\boldsymbol y) \times \boldsymbol{m}(\boldsymbol y)\, \mathrm{d}\sigma_y }\end{array}
 \end{split}\]</div>
 </section>
 <section id="maxwell-equations">
@@ -569,6 +574,15 @@ The Python interface functions that provide the assembly of the resulting matric
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Helmholtz</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../bibliography.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -202,6 +202,10 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Maxwell_Formulations.html">Maxwell</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -423,8 +427,8 @@ $$ \begin{array}{r rcl l} \textnormal{Dirichlet trace} \quad & \gamma_0 u &\in& 
 <section id="layer-potentials">
 <h2>Layer Potentials<a class="headerlink" href="#layer-potentials" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\begin{split} \begin{array}{rcl} \mathrm{SL}\left( j \right) (x) &amp;=&amp; \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, |x-y|} }{\| x-y\|} } \, j(y)\, \mathrm{d}\sigma_y } \\ 
- \mathrm{DL}\left(m \right)(x)  &amp;=&amp; \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \displaystyle{ n_y \cdot \nabla_y }\displaystyle{ \frac{ e^{i\,\kappa\,\|x-y\|}}{\| x-y\|}} } \, m(y)\, \mathrm{d}\sigma_y }
+\[\begin{split} \begin{array}{rcl} \mathrm{SL}\left( j \right) (\boldsymbol x) &amp;=&amp; \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \frac{e^{i\, \kappa \, |\boldsymbol x-\boldsymbol y|} }{\| \boldsymbol x-\boldsymbol y\|} } \, j(\boldsymbol y)\, \mathrm{d}\sigma_y } \\ 
+ \mathrm{DL}\left(m \right)(\boldsymbol x)  &amp;=&amp; \displaystyle{ \int\limits_\Gamma \displaystyle{\frac{1}{4\,\pi}\, \displaystyle{ \boldsymbol n_y \cdot \nabla_y }\displaystyle{ \frac{ e^{i\,\kappa\,\|\boldsymbol x-\boldsymbol y\|}}{\| \boldsymbol x-\boldsymbol y\|}} } \, m(\boldsymbol y)\, \mathrm{d}\sigma_y }
 \end{array}\end{split}\]</div>
 </section>
 <section id="helmholtz-dirichlet-bvp">

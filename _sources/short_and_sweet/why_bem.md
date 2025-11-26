@@ -1,5 +1,4 @@
-Boundary Element Method
-------------------------
+# Boundary Element Method
 
 **What is a standard BEM problem?**
 
@@ -32,7 +31,7 @@ One of the following pdes with given boundary condition:
 - singular integral kernels
 - dense matrices
 
-**NGSBem Keyfacts:** 
+**NGSBEM Keyfacts:** 
 
 - kernel-driven generic implementation of the layer potential operator 
 - fast and accurate assembly of system matrices using MLFMM

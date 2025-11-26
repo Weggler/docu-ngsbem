@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -202,6 +202,10 @@
 <li class="toctree-l1"><a class="reference internal" href="background/Laplace_Formulations.html">Laplace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background/Helmholtz_Formulations.html">Helmholtz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background/Maxwell_Formulations.html">Maxwell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -416,7 +420,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-ngsbem">
 <h1>Welcome to NGSBEM<a class="headerlink" href="#welcome-to-ngsbem" title="Link to this heading">#</a></h1>
-<p><strong>NGSBem</strong> implements boundary integral operators on top of [NGSolve].</p>
+<p><strong>NGSBEM</strong> implements boundary integral operators on top of [NGSolve].</p>
 <p>It currently supports <strong>single-layer, double-layer, and hypersingular operators</strong> for:</p>
 <ul class="simple">
 <li><p>Laplace equation</p></li>
@@ -424,8 +428,8 @@ document.write(`
 <li><p>Maxwell equation</p></li>
 </ul>
 <p>The software works with <strong>high-order function spaces on curved surface meshes</strong>.<br />
-Numerical integration follows <span id="id1">[]</span>, while <strong>matrix compression and potential evaluation</strong> are based on the <strong>Fast Multipole Method</strong> <span id="id2">[]</span>.</p>
-<p>NGSBEm achieves <strong>high-order convergence rates</strong>, as discussed in <span id="id3">[]</span>.</p>
+Numerical integration follows <span id="id1">[<a class="reference internal" href="bibliography.html#id3" title="Stefan Sauter and Christoph Schwab. Boundary Element Methods. Volume 39 of Springer Series in Computational Mathematics. Springer, 2009. ISBN 978-3-540-68093-2.">SS09</a>]</span>, while <strong>matrix compression and potential evaluation</strong> are based on the <strong>Fast Multipole Method</strong> <span id="id2">[<a class="reference internal" href="bibliography.html#id2" title="Vladimir Rokhlin and Leslie Greengard. A fast algorithm for the solution of integral equations of classical potential theory. Journal of Computational Physics, 60(2):187–207, 1985.">RG85</a>]</span>.</p>
+<p>NGSBem achieves <strong>high-order convergence rates</strong> such as presented and discussed in <span id="id3">[<a class="reference internal" href="bibliography.html#id4" title="Lucy Weggler. High Order Boundary Element Methods. PhD thesis, Universität des Saarlandes, 2011.">Weg11</a>]</span>.</p>
 <p>Install a <a class="reference external" href="https://github.com/NGSolve">NGSolve release</a> and try notebooks from the <a class="reference external" href="https://github.com/Weggler/docu-ngsbem">GitHub demos folder</a>.</p>
 <hr class="docutils" />
 <section id="repository-overview">
@@ -433,12 +437,12 @@ Numerical integration follows <span id="id1">[]</span>, while <strong>matrix com
 <p>The repository combines <strong>practical demos</strong> with a <strong>theoretical introduction</strong> to BEM:</p>
 <section id="introduction-to-bem-and-software-capabilities">
 <h3>1. Introduction to BEM and Software Capabilities<a class="headerlink" href="#introduction-to-bem-and-software-capabilities" title="Link to this heading">#</a></h3>
-<p>This section gives a concise overview of the <strong>Boundary Element Method (BEM)</strong> and the features of NGSBEm.<br />
+<p>This section gives a concise overview of the <strong>Boundary Element Method (BEM)</strong> and the features of NGSBem.<br />
 It highlights the <strong>convergence rates</strong> achievable for different problems.</p>
 </section>
 <section id="demos">
 <h3>2. Demos<a class="headerlink" href="#demos" title="Link to this heading">#</a></h3>
-<p>The demos show how to solve concrete problems using NGSBEm:</p>
+<p>The demos show how to solve concrete problems using NGSBEM:</p>
 <ul class="simple">
 <li><p>Explain the connection between <strong>linear operators</strong> and the <strong>boundary value problem</strong>.</p></li>
 <li><p>Show step by step how the problem is translated into the boundary element method.</p></li>
@@ -454,12 +458,14 @@ It highlights the <strong>convergence rates</strong> achievable for different pr
 <li><p>Function spaces are therefore discretized on the boundary.</p></li>
 <li><p>All relevant <strong>potentials</strong> forming the starting point of BEM are presented.</p></li>
 </ul>
-<p>The presentation is theoretical and mainly follows <span id="id4">[]</span> and <span id="id5">[]</span>.</p>
+<p>The presentation is theoretical and mainly follows <span id="id4">[<a class="reference internal" href="bibliography.html#id3" title="Stefan Sauter and Christoph Schwab. Boundary Element Methods. Volume 39 of Springer Series in Computational Mathematics. Springer, 2009. ISBN 978-3-540-68093-2.">SS09</a>]</span> and <span id="id5">[<a class="reference internal" href="bibliography.html#id4" title="Lucy Weggler. High Order Boundary Element Methods. PhD thesis, Universität des Saarlandes, 2011.">Weg11</a>]</span>.</p>
 <hr class="docutils" />
-<p>Overall, the repository offers a <strong>hands-on introduction to NGSBEm</strong>, linking practical demos to a concise summary of the <strong>theoretical foundations</strong>.<br />
+<p>Overall, the repository offers a <strong>hands-on introduction to NGSBEM</strong>, linking practical demos to a concise summary of the <strong>theoretical foundations</strong>.<br />
 Explore it on GitHub: <a class="github reference external" href="https://github.com/Weggler/docu-ngsbem">Weggler/docu-ngsbem</a>.</p>
 </section>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
