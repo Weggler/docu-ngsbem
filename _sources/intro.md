@@ -17,16 +17,16 @@ Install a [NGSolve release](https://github.com/NGSolve) and try notebooks from t
 
 ---
 
-##### Overview
+**Overview**
 
 The repository combines **practical demos** with a **theoretical introduction** to BEM:
 
-#### Short and Sweet: Introduction to BEM and Software Capabilities
+**Short and Sweet:** Introduction to BEM and Software Capabilities
 
 This section gives a concise overview of the **Boundary Element Method (BEM)** and the features of NGSBem.  
 It highlights the **convergence rates** achievable for different problems.  
 
-#### Demos: Step-by-Step from PDE to BEM Solution  
+**Demos:** Step-by-Step from PDE to BEM Solution
 
 The demos show how to solve concrete problems using NGSBEM:  
 
@@ -36,7 +36,8 @@ The demos show how to solve concrete problems using NGSBEM:
 
 These demos provide a hands-on view of the workflow, making the theory concrete.  
 
-#### Background: Theoretical Foundations
+**Background:** Theoretical Foundations
+
 This section introduces **energy spaces** and **trace spaces**.  
 
 * Unlike FEM, BEM operates **on the boundary**, not the full PDE domain.  
