@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -440,7 +440,7 @@ document.write(`
 \textnormal{natural sequence:} &amp;H^{\frac12}(\Gamma) &amp; \xrightarrow{\nabla_{\Gamma}} &amp; \boldsymbol{H}^{-\frac12}(\mathrm{curl}_{\Gamma},{\Gamma}) &amp; \xrightarrow{\mathrm{curl}_{\Gamma}}&amp; H^{-\frac12}({\Gamma})&amp; \\[1ex]
 &amp;\gamma_0 \Big\uparrow &amp;&amp; \gamma_R \Big\uparrow &amp;&amp; \gamma_{\boldsymbol n} \Big\uparrow &amp;\\[1ex]
 \textnormal{energy spaces:} &amp;H^1({\Omega}) &amp; \xrightarrow{\nabla} &amp; H(\mathbf{curl},{\Omega}) &amp; \xrightarrow{\mathbf{curl}}&amp; H(\mathrm{div},{\Omega}) &amp; \xrightarrow{\mathrm{div}} \; L_2(\Omega) \\[1ex]
-&amp; &amp;&amp; \gamma_D \Big\downarrow &amp;&amp;&amp;\\[1ex]
+&amp;\gamma_0 \Big\downarrow &amp;&amp; \gamma_D \Big\downarrow &amp;&amp; \gamma_{\boldsymbol n} \Big\downarrow &amp;\\[1ex]
 \textnormal{dual sequence:} &amp; H^{\frac12}(\Gamma) &amp; \xrightarrow{\mathbf{curl}_{\Gamma}} &amp; \boldsymbol{H}^{-\frac12}(\mathrm{div}_{\Gamma},{\Gamma}) &amp; \xrightarrow{\mathrm{div}_{\Gamma}}&amp; H^{-\frac12}({\Gamma})&amp; 
 \end{array}
 \end{split}\]</div>
@@ -454,7 +454,7 @@ document.write(`
 <li><p>the natural trace space of <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> is <span class="math notranslate nohighlight">\(H^{\frac12}(\Gamma)\)</span> - in NGSolve it is the restriction of on the boundary.</p></li>
 <li><p>the natural trace space of <span class="math notranslate nohighlight">\(H(\mathbf{curl},\Omega)\)</span> is <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{curl}_\Gamma,\Gamma)\)</span> - in NGSolve it is the vector component which is normal to the normal vector (projection on the tangent plane).</p></li>
 </ul>
-<p>The trace spaces for <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span> and the <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)\)</span> are extra implementations in NGSolve. Note that NGSolve offers a boolean flag <code class="docutils literal notranslate"><span class="pre">dual</span></code> that allows to switch to dual spaces.</p>
+<p>The trace spaces for <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span> and the <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)\)</span> are extra implementations in NGSolve. Note that NGSolve offers a boolean flag <code class="docutils literal notranslate"><span class="pre">dual</span></code> that allows to switch to the extrinsic spaces (details see <span id="id1">[<a class="reference internal" href="../bibliography.html#id4" title="Lucy Weggler. High Order Boundary Element Methods. PhD thesis, Universität des Saarlandes, 2011.">Weg11</a>]</span>).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{rcccccc}

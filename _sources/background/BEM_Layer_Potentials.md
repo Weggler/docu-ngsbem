@@ -41,7 +41,7 @@ $$
 \textnormal{natural sequence:} &H^{\frac12}(\Gamma) & \xrightarrow{\nabla_{\Gamma}} & \boldsymbol{H}^{-\frac12}(\mathrm{curl}_{\Gamma},{\Gamma}) & \xrightarrow{\mathrm{curl}_{\Gamma}}& H^{-\frac12}({\Gamma})& \\[1ex]
 &\gamma_0 \Big\uparrow && \gamma_R \Big\uparrow && \gamma_{\boldsymbol n} \Big\uparrow &\\[1ex]
 \textnormal{energy spaces:} &H^1({\Omega}) & \xrightarrow{\nabla} & H(\mathbf{curl},{\Omega}) & \xrightarrow{\mathbf{curl}}& H(\mathrm{div},{\Omega}) & \xrightarrow{\mathrm{div}} \; L_2(\Omega) \\[1ex]
-& && \gamma_D \Big\downarrow &&&\\[1ex]
+&\gamma_0 \Big\downarrow && \gamma_D \Big\downarrow && \gamma_{\boldsymbol n} \Big\downarrow &\\[1ex]
 \textnormal{dual sequence:} & H^{\frac12}(\Gamma) & \xrightarrow{\mathbf{curl}_{\Gamma}} & \boldsymbol{H}^{-\frac12}(\mathrm{div}_{\Gamma},{\Gamma}) & \xrightarrow{\mathrm{div}_{\Gamma}}& H^{-\frac12}({\Gamma})& 
 \end{array}
 $$
@@ -54,7 +54,7 @@ NGSolve implements conforming finite element spaces for all trace and energy spa
 - the natural trace space of $H^1(\Omega)$ is $H^{\frac12}(\Gamma)$ - in NGSolve it is the restriction of on the boundary. 
 - the natural trace space of $H(\mathbf{curl},\Omega)$ is $H^{-\frac12}(\mathrm{curl}_\Gamma,\Gamma)$ - in NGSolve it is the vector component which is normal to the normal vector (projection on the tangent plane). 
 
-The trace spaces for $H^{-\frac12}(\Gamma)$ and the $H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)$ are extra implementations in NGSolve. Note that NGSolve offers a boolean flag `dual` that allows to switch to dual spaces.
+The trace spaces for $H^{-\frac12}(\Gamma)$ and the $H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)$ are extra implementations in NGSolve. Note that NGSolve offers a boolean flag `dual` that allows to switch to the extrinsic spaces (details see {cite}`Weggler2011`).
 
 $$
 \begin{array}{rcccccc}
