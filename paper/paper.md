@@ -148,7 +148,7 @@ To assess efficiency, we compare accuracy and runtime across different polynomia
 |:-:|:-:|
 |![Efficiency Dirichlet BVP.](plots/laplace_DtN_timing_and_error.png){#fig:efficiency_DtN width=100%} |  ![Efficiency Neumann BVP.](plots/laplace_NtD_timing_and_error.png){width=100%} | 
 
-For example, in Laplace Dirichlet Problem illustrated in figure \ref{fig:efficiency_DtN}:
+For example, in Laplace Dirichlet Problem with efficiency plot shown on the left:
 
 - order 1 at 1250 DOFs (0.789 s runtime, error 0.07), vs.,
 - order 4 at 1120 DOFs (1.000 s runtime, error 0.001)
@@ -219,7 +219,7 @@ Draw (gf_screen)
 The BEM solution (left) and a FEM reference solution (right) are shown here:
 
 
-|   |   |  
+| BEM Solution $\phi$ | FEM Solution $\phi_{\mathrm{fem}}$ |   |  
 |:-:|:-:|
 |![BEM Solution.\label{fig:bem_solution}](plots/Capacitor_BEM_Solution.png){width=100%}  |![FEM Solution.\label{fig:fem_solution}](plots/Capacitor_FEM_Solution.png){width=100%}| 
 
