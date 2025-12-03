@@ -12,6 +12,6 @@ This repository is intended as a supplement to the existing NGSolve tutorials an
 
 For additional online documentation with demos and a touch of theory, visit: https://weggler.github.io/docu-ngsbem/intro.html
 
-For NGSolve documentation, please see: https://docu.ngsolve.org/latest/
+For NGSolve documentation, please see: https://ngsolve.org/
 
 
