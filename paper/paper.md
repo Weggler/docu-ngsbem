@@ -124,9 +124,9 @@ Accurate integration is central to the BEM, particularly because singular kernel
 The numerical experiments below compare the computed Cauchy data with the known exact solution for the Laplace equation. The results demonstrate optimal convergence rates.
 
 
-|   |   |
+| Laplace Dirichlet Problem  | Laplace Neumann Problem  |
 |:-:|:-:|
-|![Convergence of $\mathrm j$ (Dirichlet BVP).\label{fig:convergence_DtN}](plots/laplace_DtN_accuracy.png){width=100%} | ![Convergence of $\nabla_\Gamma \mathrm m$ (Neumann BVP).\label{fig:convergence_NtD}](plots/laplace_NtD_accuracy.png){width=100%} | 
+|![Convergence of $\mathrm j$.](plots/laplace_DtN_accuracy.png){width=100%} | ![Convergence of $\nabla_\Gamma \mathrm m$.](plots/laplace_NtD_accuracy.png){width=100%} | 
 
 
 Beyond scalar-valued problems, NGSBEM supports vector finite elements and BEM operators for electromagnetics, with numerical evidence of optimal convergence documented in [@ngsbem_docu].
@@ -144,11 +144,11 @@ Performance is further enhanced by:
 
 To assess efficiency, we compare accuracy and runtime across different polynomial orders. Higher-order elements provide significantly better accuracy at comparable runtime, despite the increased number of unknowns.
 
-|   |   |
+| Laplace Dirichlet Problem  | Laplace Neumann Problem  |
 |:-:|:-:|
-|![Efficiency Dirichlet BVP.\label{fig:efficiency_DtN}](plots/laplace_DtN_timing_and_error.png){width=100%} |  ![Efficiency Neumann BVP.\label{fig:efficiency_NtD}](plots/laplace_NtD_timing_and_error.png){width=100%} | 
+|![Efficiency Dirichlet BVP.](plots/laplace_DtN_timing_and_error.png){#fig:efficiency_DtN width=100%} |  ![Efficiency Neumann BVP.](plots/laplace_NtD_timing_and_error.png){width=100%} | 
 
-For example, in Laplace Dirichlet Problem illustrated in figure \autoref{fig:efficiency_DtN}:
+For example, in Laplace Dirichlet Problem illustrated in figure \ref{fig:efficiency_DtN}:
 
 - order 1 at 1250 DOFs (0.789 s runtime, error 0.07), vs.,
 - order 4 at 1120 DOFs (1.000 s runtime, error 0.001)
