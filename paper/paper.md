@@ -45,7 +45,7 @@ Key features of NGSBEM, in conjunction with NGSolve, include:
 - Support for multi-domain problems through FEM–BEM coupling.
 - Acceleration via a Multi-Level Fast Multipole Method (MLFMM) for approximating the arising Galerkin matrices.
 - Kernel-driven implementations of potential operators, enabling users to add custom operators.
-- Extensive documentation and demonstrations supporting users as they start working with [NGSBEM](https://weggler.github.io/docu-ngsbem/intro.html).
+- Extensive documentation and demonstrations supporting users as they start working with.
 
 # Statement of Need
 
@@ -63,25 +63,25 @@ NGSolve follows the philosophy of allowing users to “type formulas as they app
 
 Consider, for example, the Dirichlet problem
 
-\[
+$$
 \begin{cases}
 \Delta \phi = 0, & \text{in } \Omega,\\
 \gamma_0\phi = m, & \text{on } \Gamma.
 \end{cases}
-\]
+$$
 
 The representation formula yields:
 
-\[
-(1) \quad \quad \quad \phi(\mathbf{x}) = \mathrm{LaplaceSL}(j)(\mathbf{x})
-- \mathrm{LaplaceDL}(m)(\mathbf{x}).
-\]
+\begin{equation}\label{eq:rep_formula}
+\phi(\mathbf{x}) = \mathrm{LaplaceSL}(j)(\mathbf{x})
+- \mathrm{LaplaceDL}(m)(\mathbf{x})\,.
+\end{equation}
 
-To compute the unknown Neumann data \( j \), one solves the Galerkin discretization of the single layer operator. With trial functions \( u_j \) and test functions \( v_i \), the matrix entries are
+To compute the unknown Neumann data $j$, one solves the Galerkin discretization of the single layer operator. With trial functions $u_j$ and test functions $v_i$, the matrix entries are
 
-\[
+$$
 V_{ij} = \int_\Gamma \left[ \mathrm{LaplaceSL}(u_j) \right] v_i \, ds.
-\]
+$$
 
 In NGSBEM, the matrix is assembled as:
 
@@ -124,12 +124,12 @@ Accurate integration is central to the BEM, particularly because singular kernel
 The numerical experiments below compare the computed Cauchy data with the known exact solution for the Laplace equation. The results demonstrate optimal convergence rates.
 
 
-| Laplace Dirichlet Problem | Laplace Neumann Problem |
+|   |   |
 |:-:|:-:|
-|![Convergence of $\mathrm j$](plots/laplace_DtN_accuracy.png){width=100%} | ![Convergence of $\nabla_\Gamma \mathrm m$](plots/laplace_NtD_accuracy.png){width=100%} | 
+|![Convergence of $\mathrm j$ (Dirichlet BVP).\label{fig:convergence_DtN}](plots/laplace_DtN_accuracy.png){width=100%} | ![Convergence of $\nabla_\Gamma \mathrm m$ (Neumann BVP).\label{fig:convergence_NtD}](plots/laplace_NtD_accuracy.png){width=100%} | 
 
 
-Beyond scalar-valued problems, NGSBEM supports vector finite elements and BEM operators for electromagnetics, with numerical evidence of optimal convergence documented in the [NGSBEM documentation](https://weggler.github.io/docu-ngsbem/intro.html).
+Beyond scalar-valued problems, NGSBEM supports vector finite elements and BEM operators for electromagnetics, with numerical evidence of optimal convergence documented in [@ngsbem_docu].
 
 Another challenge is the accurate evaluation of potentials, especially in the near field. NGSBEM implements techniques developed by Gumerov and others [@gumerov2021analyticalcomputation; @kaneko2023recursiveanalyticalquadraturelaplace]. Depending on the geometric configuration, triangles are either subdivided or a line-based approximation is applied, ensuring stable and accurate potential evaluation.
 
@@ -144,11 +144,11 @@ Performance is further enhanced by:
 
 To assess efficiency, we compare accuracy and runtime across different polynomial orders. Higher-order elements provide significantly better accuracy at comparable runtime, despite the increased number of unknowns.
 
-| Laplace Dirichlet Problem |  Laplace Neumann Problem |
+|   |   |
 |:-:|:-:|
-|![Efficiency Dirichlet to Neumann](plots/laplace_DtN_timing_and_error.png){width=100%} |  ![Efficiency Neumann to Dirichlet](plots/laplace_NtD_timing_and_error.png){width=100%} | 
+|![Efficiency Dirichlet BVP.\label{fig:efficiency_DtN}](plots/laplace_DtN_timing_and_error.png){width=100%} |  ![Efficiency Neumann BVP.\label{fig:efficiency_NtD}](plots/laplace_NtD_timing_and_error.png){width=100%} | 
 
-For example, in Laplace Dirichlet Problem:
+For example, in Laplace Dirichlet Problem illustrated in figure \autoref{fig:efficiency_DtN}:
 
 - order 1 at 1250 DOFs (0.789 s runtime, error 0.07), vs.,
 - order 4 at 1120 DOFs (1.000 s runtime, error 0.001)
@@ -173,7 +173,7 @@ Consider a plate capacitor:
 |:-:|:-:|
 | $$\begin{array}{rcl l} - \Delta \phi &=& 0, \quad &\mathrm{in} \; \Omega^c \,, \\[1ex]  \gamma_0 \phi  &=&  m\,, & \mathrm{on}\;\Gamma\,,  \\[1ex] \lim\limits_{\|x\| \to \infty} \phi(x) &=& \mathcal O\left( \displaystyle{ \frac{1}{\|x\|} }\right)\,, & \|x\|\to \infty \,. \end{array} $$  | $\quad\quad$ ![](plots/Capacitor_Setting.png){width=45%}  |
 
-Using (1), the unknown Neumann data $j$ is computed via a BEM system:
+Using \autoref{eq:rep_formula}, the unknown Neumann data $j$ is computed via a BEM system:
 
 ```python
 j = GridFunction(fesL2)
@@ -219,13 +219,13 @@ Draw (gf_screen)
 The BEM solution (left) and a FEM reference solution (right) are shown here:
 
 
-| BEM solution $\phi$  | FEM solution $\phi_{\text{fem}}$  | 
+|   |   |  
 |:-:|:-:|
-|![BEM Solution](plots/Capacitor_BEM_Solution.png){width=100%}  |![Difference to FEM](plots/Capacitor_FEM_Solution.png){width=100%}| 
+|![BEM Solution.\label{fig:bem_solution}](plots/Capacitor_BEM_Solution.png){width=100%}  |![FEM Solution.\label{fig:fem_solution}](plots/Capacitor_FEM_Solution.png){width=100%}| 
 
 Because the problem is exterior, the FEM requires either infinite elements or an artificial boundary with prescribed data. The BEM, in contrast, handles the unbounded domain naturally and without mesh refinement at edges or corners. The maximum discrepancy between FEM and BEM is around 2.5%, occurring near corner singularities.
 
-Further examples, including FEM–BEM coupling, mixed formulations, and acoustic or electromagnetic scattering, can be found in the [NGSBEM](https://weggler.github.io/docu-ngsbem/intro.html).
+Further examples, including FEM–BEM coupling, mixed formulations, and acoustic or electromagnetic scattering, can be found in the online documentation [@ngsbem_docu].
 
 Details on the theoretical background for high order BEM for electrostatics and electromagnetics, can be found in [@Weggler:2011; @Weggler:2012]. 
 
