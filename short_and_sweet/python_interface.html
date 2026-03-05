@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accuracy and Convergence &#8212; NGSBEM</title>
+    <title>Python Interface Quick Reference &#8212; NGSBEM</title>
   
   
   
@@ -57,13 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'short_and_sweet/ho_cvg';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'short_and_sweet/python_interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dirichlet Laplace Indirect Method" href="../demos/Laplace_DtN_indirect.html" />
-    <link rel="prev" title="Python Interface Quick Reference" href="python_interface.html" />
+    <link rel="next" title="Accuracy and Convergence" href="ho_cvg.html" />
+    <link rel="prev" title="Boundary Element Method" href="why_bem.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,8 +176,8 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Short and Sweet</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="why_bem.html">Boundary Element Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_interface.html">Python Interface Quick Reference</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Accuracy and Convergence</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python Interface Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ho_cvg.html">Accuracy and Convergence</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -277,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/Weggler/docu_ngsbem/issues/new?title=Issue%20on%20page%20%2Fshort_and_sweet/ho_cvg.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/Weggler/docu_ngsbem/issues/new?title=Issue%20on%20page%20%2Fshort_and_sweet/python_interface.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/short_and_sweet/ho_cvg.md" target="_blank"
+      <li><a href="../_sources/short_and_sweet/python_interface.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accuracy and Convergence</h1>
+    <h1>Python Interface Quick Reference</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,86 +401,255 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accuracy-and-convergence">
-<h1>Accuracy and Convergence<a class="headerlink" href="#accuracy-and-convergence" title="Link to this heading">#</a></h1>
-<p>NGSBEM implements high order boundary element methods. The accuracy of the method depends on the order of the finite element spaces involved. On this page some numerical results of NGSBEM are presented:</p>
+  <section id="python-interface-quick-reference">
+<h1>Python Interface Quick Reference<a class="headerlink" href="#python-interface-quick-reference" title="Link to this heading">#</a></h1>
+<p>**Laplace · Helmholtz · Maxwell **</p>
+<p>This document summarizes how to use the <strong>Python interface of NGSBEM</strong> to</p>
 <ol class="arabic simple">
-<li><p>Analytically solvable problems with an unkown in one of the following trace spaces are considered</p></li>
+<li><p><strong>assemble boundary integral operators</strong> (matrices), and</p></li>
+<li><p><strong>evaluate potentials in the domain</strong> (representation formulas).</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[ H^{\frac12}(\Gamma), \quad \boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma) \quad \textnormal{and} \quad H^{-\frac12}(\Gamma)\,.\]</div>
-<p>The unkown trace is computed by NGSBEM for different orders of approximation <span class="math notranslate nohighlight">\(p\)</span> on a sequence of subsequently refined meshes. The absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error as function of degrees of freedom is analysed and convergence rates known from theory are exemplarily verified.</p>
-<ol class="arabic simple" start="2">
-<li><p>Given a complete set of Cauchy data the solution of the pde is given by its boundary integral representation. Thus, besides traces the numerical solution of the pde depends on <span class="math notranslate nohighlight">\(p\)</span>. We consider an electrostatic potential in <span class="math notranslate nohighlight">\(H^{1}(\Omega)\)</span> as solution of the Laplacian and analyse the decrease of error with respect to varying order <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
-</ol>
-<p><strong>Test 1: Laplace Dirichlet trace in <span class="math notranslate nohighlight">\(H^{\frac12}(\Gamma)\)</span></strong></p>
-<p>Consider the harmonic function <span class="math notranslate nohighlight">\(u\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[ u: \boldsymbol x \mapsto \dfrac{1}{\| \boldsymbol x - \boldsymbol x_s\|}, \quad \boldsymbol x_s = (1,1,1)^\intercal \in \Omega^c\,, \]</div>
-<p>as unique solution of the Neumann boundary value problem</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-center"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_1 u &amp;=&amp; u_1, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array} \right.\quad\quad\quad\)</span></p></td>
-<td class="text-center"><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit ball and <span class="math notranslate nohighlight">\(\Gamma\)</span> the unit sphere, respectively. Using the NGSBEM solver we compute the Dirichlet data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we can compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
-<p><img alt="" src="../_images/laplace_NtD_accuracy.png" /></p>
-<p>Note that the Neumann problem is not uniquely solvable. They are the same up to a constant. Thus we compare here the surface gradients of the numerical and the exact solution.</p>
-<p><strong>Test 2: Laplace Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span></strong></p>
-<p>To analyse convergence rates for traces in <span class="math notranslate nohighlight">\(H^{-\frac12}(\Gamma)\)</span> consider now the Dirichlet boundary value problem with unkonwn Neumann data, i.e.,</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-center"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\left\{ \begin{array}{rcl l} \Delta u &amp;=&amp; 0, \quad  &amp; \mathrm{in} \, \Omega\,, \\ \gamma_0 u &amp;=&amp; u_0, \quad &amp; \mathrm{on} \, \Gamma\,. \end{array} \right. \quad \quad\quad\)</span></p></td>
-<td class="text-center"><p><img alt="" src="../_images/BEM_interior.png" /></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Thus, again <span class="math notranslate nohighlight">\(u\)</span> from Test 1 is the unique solution of this problem. Using the NGSBEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span>  on a sequence of meshes with decreasing mesh size, i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. As the exact solution is kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:</p>
-<p><img alt="" src="../_images/laplace_DtN_accuracy.png" /></p>
-<p><strong>Common notes for Test 1 and 2:</strong></p>
+<p>The focus is on <strong>practical usage of the interface</strong>, staying as close as possible to the <strong>explicit mathematical structure of the operators</strong>.</p>
+<p>We deliberately separate</p>
 <ul class="simple">
-<li><p>Our manufactured solution <span class="math notranslate nohighlight">\(u\)</span> does not depend on the mesh, i.e., it is a solution for all meshes. This is why the geometrical approximation order is <span class="math notranslate nohighlight">\(1\)</span> for all test runs.</p></li>
-<li><p>Check out the repository’s <code class="docutils literal notranslate"><span class="pre">convergence_timing</span></code> folder if you like to run this test.</p></li>
+<li><p><strong>Assembly</strong> → bilinear form → <strong>matrix</strong></p></li>
+<li><p><strong>Evaluation</strong> → layer potential based on density → <strong>field value in the domain</strong></p></li>
 </ul>
-<p><strong>Test 3: Maxwell Neumann trace in <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span></strong></p>
-<p>Besides electrostatics we can also solve boundary value problems from electromagnetics. The relevant trace spaces are <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{curl}_\Gamma, \Gamma)\)</span>, and its dual, <span class="math notranslate nohighlight">\(\boldsymbol H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span>. NGSBEM offers finite element spaces for both trace spaces.</p>
-<p>In order to verify convergence rates for high order bem, we consider the scattering of a plane wave <span class="math notranslate nohighlight">\(\boldsymbol E_{\mathrm{inc}}\)</span> at a perfect electric conducting sphere. This scattering problem is analytically solvable by so-called Mie series. In order to keep the geometrical approximation error negligible, the geometrical approximation oder is set to <span class="math notranslate nohighlight">\(4\)</span> for all tests runs.</p>
-<p>The scattered electric field <span class="math notranslate nohighlight">\(\boldsymbol E\)</span> solves the following boundary value problem:</p>
+<hr class="docutils" />
+<p><strong>Notation</strong></p>
+<p>The notation reflects the associated <strong>trace spaces</strong>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-center"><p></p></th>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\( \left\{ \begin{array}{rcl l} \mathbf{\mathrm{curl}}\,\mathbf{\mathrm{curl}}\, \boldsymbol E - \kappa^2 \, \boldsymbol E&amp;=&amp; \boldsymbol 0, \quad  &amp; \mathrm{in} \, \Omega^c\,, \\ \gamma_R \boldsymbol E &amp;=&amp; \boldsymbol E_{\mathrm{inc}}, \quad &amp; \mathrm{on} \, \Gamma\,, \\ \textnormal{ + radiation  condition} &amp; &amp; &amp;|x| \to \infty\,. \end{array} \right. \quad\quad\quad\)</span></p></td>
-<td class="text-center"><p><img alt="" src="../_images/BEM_exterior.png" /></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">u,</span> <span class="pre">v</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SurfaceL2</span></code> functions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uH1,</span> <span class="pre">vH1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">H1</span></code> traces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uHDiv,</span> <span class="pre">vHDiv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HDivSurface</span></code> functions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uHCurl,</span> <span class="pre">vHCurl</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HCurl</span></code> traces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ds</span></code></p></td>
+<td><p>boundary measure</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kappa</span></code></p></td>
+<td><p>wavenumber</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Using the NGSBEM solver we compute the Neumann data for varying order <span class="math notranslate nohighlight">\(p\)</span> on a sequence of meshes with decreasing mesh size i.e., <span class="math notranslate nohighlight">\(h \sim\frac1N\)</span>. The mesh is approximated with curvilinear elements of order <span class="math notranslate nohighlight">\(4\)</span>. As the exact solution for Mie-scattering kown, we compute the absolute <span class="math notranslate nohighlight">\(L_2\)</span>-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:</p>
-<p><img alt="" src="../_images/maxwell_mie_accuracy.png" /></p>
-<p><strong>Notes:</strong></p>
+<hr class="docutils" />
+<p><strong>1. Assembly: Boundary Integral Operators (Matrices)</strong></p>
+<p><strong>Laplace</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Assembly</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">LaplaceSL(u*ds)*v*ds</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double Layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">LaplaceDL(uH1*ds)*v*ds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Hypersingular operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">LaplaceSL(curl(uH1)*ds)*curl(vH1)*ds</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notes:</p>
 <ul class="simple">
-<li><p>The Mie series solves the scattering at the sphere. A high order mesh is required to obtain high order convergence at least if the traces are approximated with <span class="math notranslate nohighlight">\(p&gt;2\)</span>.</p></li>
-<li><p>For approximation order <span class="math notranslate nohighlight">\(p=0\)</span> the linear edge element functions are used, i.e., for a discretisation of trace space <span class="math notranslate nohighlight">\(H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span> those funcitons are called Rao-Wilton-Glisson functions (RWG).</p></li>
-<li><p>Check out the repository’s <code class="docutils literal notranslate"><span class="pre">convergence_timing</span></code> folder if you like to run this test.</p></li>
+<li><p>The <strong>adjoint double-layer operator</strong> (K’) arises naturally from the adjoint formulation and is therefore not listed separately here.</p></li>
 </ul>
+<hr class="docutils" />
+<p><strong>Helmholtz</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Assembly</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(u*ds,</span> <span class="pre">kappa)*v*ds</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double Layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">HelmholtzDL(uH1*ds,</span> <span class="pre">kappa)*v*ds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Hypersingular operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(curl(uH1)*ds,</span> <span class="pre">kappa)*curl(vH1)*ds</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Combined field operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">HelmholtzCF(u*ds,</span> <span class="pre">kappa)*v*ds</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The <strong>adjoint double-layer operator</strong> (K’) arises naturally from the adjoint formulation and is therefore not listed separately here.</p></li>
+<li><p>In practical scattering problems, the <strong>Combined Field Integral Equation (CFIE)</strong> is typically used because it is <strong>stable with respect to interior resonances</strong>.</p></li>
+<li><p>The combined field operator could also be constructed from the standard operators above, but it is provided directly for convenience.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Maxwell</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Construction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">kappa</span> <span class="pre">*</span> <span class="pre">V1</span> <span class="pre">-</span> <span class="pre">(1/kappa)</span> <span class="pre">*</span> <span class="pre">V2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">V1</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(uHDiv*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">vHDiv*ds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">V2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(div(uHDiv)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">div(vHDiv)*ds</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double layer operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">HelmholtzDL(Cross(n,</span> <span class="pre">uHCurl)*ds,</span> <span class="pre">kappa)*vHDiv*ds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Hypersingular operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">kappa</span> <span class="pre">*</span> <span class="pre">D1</span> <span class="pre">-</span> <span class="pre">(1/kappa)</span> <span class="pre">*</span> <span class="pre">D2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">=</span> <span class="pre">HelmholtzSL((Cross(n,</span> <span class="pre">uHCurl)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">Cross(n,</span> <span class="pre">vHCurl)*ds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">D2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(uHCurl.Operator(&quot;surface_curl&quot;)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">vHCurl.Operator(&quot;surface_curl&quot;)*ds</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>In NGSBem, Maxwell boundary operators are <strong>expressed in terms of Helmholtz potentials</strong>.</p></li>
+<li><p>This reflects the structure of the vector Helmholtz equation underlying Maxwell’s equations.</p></li>
+<li><p>The hypersingular operator is the single layer operator for the magnetic field component.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>2. Potential Evaluation (Representation Formulas)</strong></p>
+<p>These operators <strong>do not produce matrices</strong>.  Instead, they evaluate the <strong>field generated by a boundary density</strong> at points in the domain.</p>
+<hr class="docutils" />
+<p><strong>Laplace</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potential</p></th>
+<th class="head"><p>Interface</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LSPotential</span> <span class="pre">=</span> <span class="pre">LaplaceSL(u*ds)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LDPotential</span> <span class="pre">=</span> <span class="pre">LaplaceDL(uH1*ds)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Helmholtz</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potential</p></th>
+<th class="head"><p>Interface</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HelmholtzSL(u*ds,</span> <span class="pre">kappa)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HelmholtzDL(u*ds,</span> <span class="pre">kappa)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Maxwell</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potential</p></th>
+<th class="head"><p>Interface</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kappa</span> <span class="pre">*</span> <span class="pre">E1</span> <span class="pre">+</span> <span class="pre">(1/kappa)</span> <span class="pre">*</span> <span class="pre">E2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(uHDiv.Trace()*ds,</span> <span class="pre">kappa)(j)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">=</span> <span class="pre">grad(</span> <span class="pre">HelmholtzSL(div(uHDiv.Trace())*ds,</span> <span class="pre">kappa)(j)</span> <span class="pre">)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Double Layer potential</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(Cross(n,uHCurl*ds,</span> <span class="pre">kappa))(m)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>the Maxwell representation formulas are written <strong>explicitly in terms of Helmholtz single-layer potentials</strong>.</p></li>
+<li><p>the <strong>double-layer operator in the matrix formulation uses <code class="docutils literal notranslate"><span class="pre">HelmholtzDL</span></code></strong>,  whereas in the <strong>representation formula the same contribution appears as <code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(...))</span></code></strong>.</p></li>
+</ul>
+<p><strong>3. Matrix vs. Potential Operators</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Expression pattern</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SL(u</span> <span class="pre">*</span> <span class="pre">ds)</span> <span class="pre">*</span> <span class="pre">v</span> <span class="pre">*</span> <span class="pre">ds</span></code></p></td>
+<td><p>matrix / bilinear form</p></td>
+<td><p>assembling boundary operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SL(u</span> <span class="pre">*</span> <span class="pre">ds)(j)</span></code></p></td>
+<td><p>field value</p></td>
+<td><p>evaluating potentials in the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>4. Typical Workflow</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>assemble boundary integral operator</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>solve for boundary density</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>evaluate potential in the domain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -516,20 +683,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="python_interface.html"
+       href="why_bem.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python Interface Quick Reference</p>
+        <p class="prev-next-title">Boundary Element Method</p>
       </div>
     </a>
     <a class="right-next"
-       href="../demos/Laplace_DtN_indirect.html"
+       href="ho_cvg.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dirichlet Laplace Indirect Method</p>
+        <p class="prev-next-title">Accuracy and Convergence</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

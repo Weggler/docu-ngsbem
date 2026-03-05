@@ -1,4 +1,4 @@
-# Convergence Rates
+# Accuracy and Convergence
 
 
 NGSBEM implements high order boundary element methods. The accuracy of the method depends on the order of the finite element spaces involved. On this page some numerical results of NGSBEM are presented: 
