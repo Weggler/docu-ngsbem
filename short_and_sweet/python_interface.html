@@ -510,7 +510,7 @@ document.write(`
 <td><p>- <code class="docutils literal notranslate"><span class="pre">V2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(div(uHDiv)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">div(vHDiv)*ds</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Double layer operator</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">HelmholtzDL(Cross(n,</span> <span class="pre">uHCurl)*ds,</span> <span class="pre">kappa)*vHDiv*ds</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">MaxwellDL(uHCurl.Operator(&quot;rotated_trace&quot;)*ds,</span> <span class="pre">kappa)*vHDiv*ds</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Hypersingular operator</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">kappa</span> <span class="pre">*</span> <span class="pre">D1</span> <span class="pre">-</span> <span class="pre">(1/kappa)</span> <span class="pre">*</span> <span class="pre">D2</span></code></p></td>
@@ -582,7 +582,7 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">=</span> <span class="pre">grad(</span> <span class="pre">HelmholtzSL(div(uHDiv.Trace())*ds,</span> <span class="pre">kappa)(j)</span> <span class="pre">)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Double Layer potential</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(Cross(n,uHCurl*ds,</span> <span class="pre">kappa))(m)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(uHCurl.Operator(&quot;rotated_trace&quot;)*ds,</span> <span class="pre">kappa))(m)</span></code></p></td>
 </tr>
 </tbody>
 </table>

@@ -62,7 +62,7 @@ In practical scattering problems, the **Combined Field Integral Equation (CFIE)*
 | Single Layer operator | `V = kappa * V1 - (1/kappa) * V2` |
 | | - `V1 = HelmholtzSL(uHDiv*ds, kappa) * vHDiv*ds` |
 | | - `V2 = HelmholtzSL(div(uHDiv)*ds, kappa) * div(vHDiv)*ds` |
-| Double layer operator | `K = HelmholtzDL(Cross(n, uHCurl)*ds, kappa)*vHDiv*ds` |
+| Double layer operator | `K = MaxwellDL(uHCurl.Operator("rotated_trace")*ds, kappa)*vHDiv*ds` |
 | Hypersingular operator | `D = kappa * D1 - (1/kappa) * D2` |
 |  | - `D1 = HelmholtzSL((Cross(n, uHCurl)*ds, kappa) * Cross(n, vHCurl)*ds` |
 |  | - `D2 = HelmholtzSL(uHCurl.Operator("surface_curl")*ds, kappa) * vHCurl.Operator("surface_curl")*ds` |
@@ -101,7 +101,7 @@ These operators **do not produce matrices**.  Instead, they evaluate the **field
 | Single Layer potential | `kappa * E1 + (1/kappa) * E2` |
 |  | `E1 = HelmholtzSL(uHDiv.Trace()*ds, kappa)(j)` |
 |  | `E2 = grad( HelmholtzSL(div(uHDiv.Trace())*ds, kappa)(j) )` |
-| Double Layer potential | `curl(HelmholtzSL(Cross(n,uHCurl*ds, kappa))(m)`  |
+| Double Layer potential | `curl(HelmholtzSL(uHCurl.Operator("rotated_trace")*ds, kappa))(m)`  |
 
 Notes:
 
