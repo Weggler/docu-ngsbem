@@ -1,8 +1,6 @@
 Python Interface Quick Reference  
 --------
 
-**Laplace · Helmholtz · Maxwell **
-
 This document summarizes how to use the **Python interface of NGSBEM** to
 
 1. **assemble boundary integral operators** (matrices), and  
@@ -19,7 +17,6 @@ We deliberately separate
 
 **Notation**
 
-The notation reflects the associated **trace spaces**.
 
 | Symbol | Meaning |
 |---|---|
@@ -42,9 +39,6 @@ The notation reflects the associated **trace spaces**.
 | Double Layer operator | `K = LaplaceDL(uH1*ds)*v*ds` |
 | Hypersingular operator | `D = LaplaceSL(curl(uH1)*ds)*curl(vH1)*ds` |
 
-Notes: 
-
-- The **adjoint double-layer operator** \(K'\) arises naturally from the adjoint formulation and is therefore not listed separately here.
 
 ---
 
@@ -57,11 +51,7 @@ Notes:
 | Hypersingular operator | `D = HelmholtzSL(curl(uH1)*ds, kappa)*curl(vH1)*ds` |
 | Combined field operator | `C = HelmholtzCF(u*ds, kappa)*v*ds` |
 
-Notes:
-
-- The **adjoint double-layer operator** \(K'\) arises naturally from the adjoint formulation and is therefore not listed separately here.
-- In practical scattering problems, the **Combined Field Integral Equation (CFIE)** is typically used because it is **stable with respect to interior resonances**. 
-- The combined field operator could also be constructed from the standard operators above, but it is provided directly for convenience.
+In practical scattering problems, the **Combined Field Integral Equation (CFIE)** is typically used because it is **stable with respect to interior resonances**. The combined field operator could also be constructed from the standard operators above, but it is provided directly for convenience.
 
 ---
 
@@ -77,11 +67,6 @@ Notes:
 |  | - `D1 = HelmholtzSL((Cross(n, uHCurl)*ds, kappa) * Cross(n, vHCurl)*ds` |
 |  | - `D2 = HelmholtzSL(uHCurl.Operator("surface_curl")*ds, kappa) * vHCurl.Operator("surface_curl")*ds` |
 
-Notes: 
-
-- In NGSBem, Maxwell boundary operators are **expressed in terms of Helmholtz potentials**.  
-- This reflects the structure of the vector Helmholtz equation underlying Maxwell's equations.
-- The hypersingular operator is the single layer operator for the magnetic field component.  
 
 ---
 
