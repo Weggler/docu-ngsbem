@@ -537,10 +537,10 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Single Layer potential</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">LSPotential</span> <span class="pre">=</span> <span class="pre">LaplaceSL(u*ds)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LaplaceSL(u*ds)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Double Layer potential</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">LDPotential</span> <span class="pre">=</span> <span class="pre">LaplaceDL(uH1*ds)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LaplaceDL(uH1*ds)</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -590,7 +590,7 @@ document.write(`
 <p>Notes:</p>
 <ul class="simple">
 <li><p>the Maxwell representation formulas are written <strong>explicitly in terms of Helmholtz single-layer potentials</strong>.</p></li>
-<li><p>the <strong>double-layer operator in the matrix formulation uses <code class="docutils literal notranslate"><span class="pre">HelmholtzDL</span></code></strong>,  whereas in the <strong>representation formula the same contribution appears as <code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(...))</span></code></strong>.</p></li>
+<li><p>the <strong>double-layer operator is <code class="docutils literal notranslate"><span class="pre">MaxwellDL</span></code></strong>,  whereas in the <strong>representation formula the same contribution appears as <code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(...))</span></code></strong>.</p></li>
 </ul>
 <p><strong>3. Matrix vs. Potential Operators</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">

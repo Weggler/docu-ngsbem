@@ -80,8 +80,8 @@ These operators **do not produce matrices**.  Instead, they evaluate the **field
 
 | Potential | Interface |
 |---|---|
-| Single Layer potential | `LSPotential = LaplaceSL(u*ds)` |
-| Double Layer potential | `LDPotential = LaplaceDL(uH1*ds)` |
+| Single Layer potential | `LaplaceSL(u*ds)` |
+| Double Layer potential | `LaplaceDL(uH1*ds)` |
 
 ---
 
@@ -106,7 +106,7 @@ These operators **do not produce matrices**.  Instead, they evaluate the **field
 Notes:
 
 - the Maxwell representation formulas are written **explicitly in terms of Helmholtz single-layer potentials**.
-- the **double-layer operator in the matrix formulation uses `HelmholtzDL`**,  whereas in the **representation formula the same contribution appears as `curl(HelmholtzSL(...))`**.
+- the **double-layer operator is `MaxwellDL`**,  whereas in the **representation formula the same contribution appears as `curl(HelmholtzSL(...))`**.
 
 
 **3. Matrix vs. Potential Operators**
