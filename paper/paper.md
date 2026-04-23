@@ -34,7 +34,7 @@ bibliography: paper.bib
 
 # Summary
 
-NGSBEM is the dedicated boundary element method (BEM) module within NETGEN/NGSolve. It provides the full set of tools needed to formulate and solve boundary integral equations, including potential operators and their Galerkin discretizations. Seamlessly integrated with the NGSolve core, NGSBEM enables efficient numerical solutions of linear interior and exterior boundary value problems based on the BEM.
+NGSBEM is the dedicated boundary element method (BEM) module within the NETGEN/NGSolve framework [@ngsolve-website]. It provides the full set of tools needed to formulate and solve boundary integral equations, including potential operators and their Galerkin discretizations. Seamlessly integrated with the NGSolve core, NGSBEM enables efficient numerical solutions of linear interior and exterior boundary value problems based on the BEM.
 
 Key features of NGSBEM, in conjunction with NGSolve, include:
 
@@ -47,11 +47,41 @@ Key features of NGSBEM, in conjunction with NGSolve, include:
 - Kernel-driven implementations of potential operators, enabling users to add custom operators.
 - Extensive documentation and demonstrations supporting users as they start working with.
 
+The source code is publicly available at [@ngsolve-github]. 
+
 # Statement of Need
 
 Computational engineering frequently involves solving boundary value problems (BVPs), including linear and nonlinear partial differential equations, as well as interior, exterior, and transmission problems. While the finite element method (FEM) excels at handling interior problems with nonlinearities, the BEM is the method of choice for solving linear second-order problems in unbounded domains.
 
 A unified framework that naturally combines both approaches is rare. NETGEN/NGSolve addresses this gap by providing a complete environment for Galerkin BEM and its coupling with FEM.
+
+
+# State of the Field
+
+A number of open-source software packages for FEM, BEM, and FEM-BEM coupling are available, but fully integrated, high-order frameworks combining both methods in a single environment remain limited. On the FEM side, widely used libraries such as FEniCS [@FEniCS-website] and deal.II [@dealii-website] provide advanced high-order discretizations, including support for quadrilateral/hexahedral elements and curved geometries, but do not natively include BEM functionality. Conversely, dedicated BEM libraries such as Bempp [@bempp-website] offer a mature operator-based framework with documented FEM-BEM coupling interfaces (e.g., to FEniCS), yet are generally restricted to piecewise planar triangular surface meshes and do not provide a unified high-order curved-element infrastructure.
+
+Hybrid approaches exist but are typically loosely coupled. For example, FreeFEM [@freefem-website] supports BEM formulations through external libraries such as BEMTool, but focuses primarily on simplex-based discretizations with moderate polynomial order. Other frameworks, such as Bempp, follow a similar paradigm of specialized BEM components coupled to FEM solvers rather than a unified framework.
+
+In summary, alternatives do exist, but they are not directly comparable in terms of integration: most either provide high-order FEM without BEM, or BEM with limited geometry/order support and external coupling. Fully unified environments that combine high-order FEM, BEM, curved elements, and native coupling - as realized in NETGEN/NGSolve - remain comparatively rare. This justifies a dedicated implementation rather than extending existing loosely coupled frameworks.
+
+
+# Software Design
+
+The architecture of NGSolve [@ngsolve-github], developed in conjunction with Netgen and extended by NGSBEM, reflects a deliberate balance between usability, extensibility, and high-performance execution, aligned with the needs of computational research. A key design decision is the separation between a high-level Python interface and a performance-critical C++ core. This allows users to express FEM-BEM couplings and variational formulations concisely, while delegating assembly, discretization, and solver execution to optimized backend components.
+
+The core leverages template-based generic programming to achieve compile-time specialization of finite element operators, enabling efficient handling of high-order and curved elements without sacrificing generality. Parallelism is addressed through MPI and shared-memory threading, ensuring scalability for large-scale simulations. The trade-off is increased implementation complexity, which is mitigated by a consistent decomposition into composable abstractions (finite element spaces, bilinear forms, integrators, and boundary operators).
+
+Importantly, the architecture is designed for incremental extensibility: new methods can be introduced at the level of individual components without modifying the overall system. This has enabled a contribution-driven evolution, where features such as FEM-BEM coupling originated as external developments before integration into the core. Such a design directly supports reproducible research by allowing rapid prototyping while maintaining a stable, performant foundation.
+
+The documentation is publicly available at [@ngsolve-docu].
+
+# Research impact statement
+
+The NGSBEM extension within NGSolve has already demonstrated early but tangible research impact, particularly through increasing adoption and engagement within the existing NGSolve user community. While the software is relatively recent, there is clear evidence of growing external interest and active use in emerging research problems. For example, initial applications in low-frequency stabilization have led to publicly shared demonstration cases and triggered follow-up on robust preconditioners for Maxwell-type problems [@andriulli2021] which are now part of the showcased examples on [@ngsbem-docu].
+
+In addition, recent user interactions - particularly through developer and user meetings - indicate a rising demand for FEM-BEM coupling capabilities, with multiple groups exploring how NGSBEM can be applied to new classes of problems. This organic uptake reflects both the relevance of the approach and the accessibility of the implementation. The project benefits from the established ecosystem of NGSolve, including documented examples, reproducible scripts, and a stable user base, which enable external validation and reuse. This lowers the barrier for adoption in independent research settings.
+
+Although formal publications and large-scale benchmarks are still emerging, the current trajectory provides credible evidence of near-term impact. The present publication represents the first consolidated description of NGSBEM and is expected to further enhance visibility, reproducibility, and adoption within the computational science community. Early adoption within the existing NGSolve community provides a concrete indicator of practical relevance.
 
 # Usability, Accuracy, and Efficiency
 
@@ -225,9 +255,13 @@ The BEM solution (left) and a FEM reference solution (right) are shown here:
 
 Because the problem is exterior, the FEM requires either infinite elements or an artificial boundary with prescribed data. The BEM, in contrast, handles the unbounded domain naturally and without mesh refinement at edges or corners. The maximum discrepancy between FEM and BEM is around 2.5%, occurring near corner singularities.
 
-Further examples, including FEM–BEM coupling, mixed formulations, and acoustic or electromagnetic scattering, can be found in the online documentation [@ngsbem_docu].
+Further examples, including FEM–BEM coupling, mixed formulations, and acoustic or electromagnetic scattering, can be found in the online documentation [@ngsbem-docu].
 
 Details on the theoretical background for high order BEM for electrostatics and electromagnetics, can be found in [@Weggler:2011; @Weggler:2012]. 
+
+# AI usage disclosure
+
+No AI-assisted tools were used in the development of the software described in this work. The codebase of NGSolve and its extensions, including NGSBEM, has been developed through conventional scientific programming practices by domain experts over multiple decades. AI tools were also not used in the generation of the scientific results presented in this manuscript.
 
 # References
 
