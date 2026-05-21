@@ -24,9 +24,7 @@ mie_serie_current (double ctheta, double stheta, double radius, double kappa, in
   double  ll;
   double  s, ds, x;
   double  rbessel, ibessel;
-  double  plk[lmax + 1], dplk[lmax + 1];
-  plk[lmax + 1] = {0.};
-  dplk[lmax + 1] = {0.};
+  double  plk[lmax + 1] = {0.}, dplk[lmax + 1] = {0.};
   double  j, dj, jlk[4];
   double  p, dp, pl1[3];
   Complex h, dh, hlk[4];

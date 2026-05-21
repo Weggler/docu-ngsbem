@@ -14,7 +14,20 @@ csv_path = Path("results.csv")
 results = []
 
 # Get reference mie series current from cpp
-txt = Path("mie_ngs.cpp").read_text()
+#
+# Default:
+#   mie.cpp uses the standard C++ special functions
+#   (std::assoc_legendre, std::cyl_bessel_j, std::cyl_neumann)
+#   and is the preferred portable implementation.
+#
+# Alternative:
+#   On some macOS setups these functions may not be available
+#   or may fail to compile. In that case switch to mie_ngs.cpp,
+#   which uses NGSolve / BEM routines instead.
+#
+txt = Path("mie.cpp").read_text()
+#txt = Path("mie_ngs.cpp").read_text()
+
 mie = CompilePythonModule(txt, init_function_name="Mie", add_header=False)
 miecurrent = mie.MieCurrent()
 
