@@ -48,7 +48,6 @@ We deliberately separate
 |---|---|
 | Single Layer operator | `V = HelmholtzSL(u*ds, kappa)*v*ds` |
 | Double Layer operator | `K = HelmholtzDL(uH1*ds, kappa)*v*ds` |
-| Hypersingular operator | `D = HelmholtzSL(curl(uH1)*ds, kappa)*curl(vH1)*ds` |
 | Combined field operator | `C = HelmholtzCF(u*ds, kappa)*v*ds` |
 
 In practical scattering problems, the **Combined Field Integral Equation (CFIE)** is typically used because it is **stable with respect to interior resonances**. The combined field operator could also be constructed from the standard operators above, but it is provided directly for convenience.
@@ -62,10 +61,10 @@ In practical scattering problems, the **Combined Field Integral Equation (CFIE)*
 | Single Layer operator | `V = kappa * V1 - (1/kappa) * V2` |
 | | - `V1 = HelmholtzSL(uHDiv*ds, kappa) * vHDiv*ds` |
 | | - `V2 = HelmholtzSL(div(uHDiv)*ds, kappa) * div(vHDiv)*ds` |
-| Double layer operator | `K = MaxwellDL(uHCurl.Operator("rotated_trace")*ds, kappa)*vHDiv*ds` |
+| Double layer operator | `K = MaxwellDL(Cross(n, uHCurl)*ds, kappa)*vHDiv*ds` |
 | Hypersingular operator | `D = kappa * D1 - (1/kappa) * D2` |
 |  | - `D1 = HelmholtzSL((Cross(n, uHCurl)*ds, kappa) * Cross(n, vHCurl)*ds` |
-|  | - `D2 = HelmholtzSL(uHCurl.Operator("surface_curl")*ds, kappa) * vHCurl.Operator("surface_curl")*ds` |
+|  | - `D2 = HelmholtzSL(curl(uHCurl)*ds, kappa) * curl(vHCurl)*ds` |
 
 
 ---
@@ -101,7 +100,7 @@ These operators **do not produce matrices**.  Instead, they evaluate the **field
 | Single Layer potential | `kappa * E1 + (1/kappa) * E2` |
 |  | `E1 = HelmholtzSL(uHDiv.Trace()*ds, kappa)(j)` |
 |  | `E2 = grad( HelmholtzSL(div(uHDiv.Trace())*ds, kappa)(j) )` |
-| Double Layer potential | `curl(HelmholtzSL(uHCurl.Operator("rotated_trace")*ds, kappa))(m)`  |
+| Double Layer potential | `curl(HelmholtzSL(Cross(n,uHCurl.Trace())*ds, kappa))(m)`  |
 
 Notes:
 

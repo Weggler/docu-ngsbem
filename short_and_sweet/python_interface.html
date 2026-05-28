@@ -182,17 +182,24 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_indirect.html">Dirichlet Laplace Indirect Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_quads_indirect.html">Dirichlet Laplace Indirect Method using Quads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_DtN_direct.html">Dirichlet Laplace Direct Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_indirect.html">Neumann Laplace Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_NtD_direct.html">Neumann Laplace Direct Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Laplace_Mixed.html">Laplace with Mixed Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/BEM_Laplace_Capacitor.html">Laplace BEM Plate Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Poisson.html">Poisson Equation FEM</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../demos/FEMBEM_Capacitor.html">Laplace FEM-BEM Coupling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Helmholtz_Brakhage_Werner.html">Helmholtz Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_indirect.html">Maxwell PEC Indirect Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_direct.html">Maxwell PEC Direct method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_DtN_stabilized.html">Maxwell Stabilized</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_Mixed.html">Maxwell Mixed Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Maxwell_EFIE_Preconditioner.html">Maxwell SL with preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Lame_DtN_direct.html">Dirichlet Lame Direct Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demos/Lame_DtN_indirect.html">Dirichlet Lame Indirect Method</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="nav bd-sidenav">
@@ -481,10 +488,7 @@ document.write(`
 <tr class="row-odd"><td><p>Double Layer operator</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">HelmholtzDL(uH1*ds,</span> <span class="pre">kappa)*v*ds</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Hypersingular operator</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(curl(uH1)*ds,</span> <span class="pre">kappa)*curl(vH1)*ds</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Combined field operator</p></td>
+<tr class="row-even"><td><p>Combined field operator</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">HelmholtzCF(u*ds,</span> <span class="pre">kappa)*v*ds</span></code></p></td>
 </tr>
 </tbody>
@@ -510,7 +514,7 @@ document.write(`
 <td><p>- <code class="docutils literal notranslate"><span class="pre">V2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(div(uHDiv)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">div(vHDiv)*ds</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Double layer operator</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">MaxwellDL(uHCurl.Operator(&quot;rotated_trace&quot;)*ds,</span> <span class="pre">kappa)*vHDiv*ds</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">MaxwellDL(Cross(n,</span> <span class="pre">uHCurl)*ds,</span> <span class="pre">kappa)*vHDiv*ds</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Hypersingular operator</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">kappa</span> <span class="pre">*</span> <span class="pre">D1</span> <span class="pre">-</span> <span class="pre">(1/kappa)</span> <span class="pre">*</span> <span class="pre">D2</span></code></p></td>
@@ -519,7 +523,7 @@ document.write(`
 <td><p>- <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">=</span> <span class="pre">HelmholtzSL((Cross(n,</span> <span class="pre">uHCurl)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">Cross(n,</span> <span class="pre">vHCurl)*ds</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
-<td><p>- <code class="docutils literal notranslate"><span class="pre">D2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(uHCurl.Operator(&quot;surface_curl&quot;)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">vHCurl.Operator(&quot;surface_curl&quot;)*ds</span></code></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">D2</span> <span class="pre">=</span> <span class="pre">HelmholtzSL(curl(uHCurl)*ds,</span> <span class="pre">kappa)</span> <span class="pre">*</span> <span class="pre">curl(vHCurl)*ds</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +586,7 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">=</span> <span class="pre">grad(</span> <span class="pre">HelmholtzSL(div(uHDiv.Trace())*ds,</span> <span class="pre">kappa)(j)</span> <span class="pre">)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Double Layer potential</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(uHCurl.Operator(&quot;rotated_trace&quot;)*ds,</span> <span class="pre">kappa))(m)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">curl(HelmholtzSL(Cross(n,uHCurl.Trace())*ds,</span> <span class="pre">kappa))(m)</span></code></p></td>
 </tr>
 </tbody>
 </table>
