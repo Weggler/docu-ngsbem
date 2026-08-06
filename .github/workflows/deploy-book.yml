@@ -3,17 +3,9 @@ name: Build and deploy Jupyter Book
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "docu/**"
-      - "demos/**"
-      - ".github/workflows/deploy-book.yml"
 
   push:
     branches: [main]
-    paths:
-      - "docu/**"
-      - "demos/**"
-      - ".github/workflows/deploy-book.yml"
 
   workflow_dispatch:
 
