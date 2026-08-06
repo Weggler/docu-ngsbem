@@ -7,7 +7,7 @@ Since August 2025, NGSolve has incorporated boundary element method (BEM) functi
 
 This repository is intended as a supplement to the existing NGSolve tutorials and demos. 
 
-- It presents a carefully curated collection of notebooks in the demos folder. The demos illustrate how NGSolve supports the implementation of boundary element methods. The examples demonstrate the breadth of current BEM capabilities, specifically showcasing the Python interface for solving boundary value problems related to the homogeneous Laplace, Helmholtz, and Maxwell equations as available in NGSolve.
+- It presents a carefully curated collection of notebooks in the docu/demos folder. The demos illustrate how NGSolve supports the implementation of boundary element methods. The examples demonstrate the breadth of current BEM capabilities, specifically showcasing the Python interface for solving boundary value problems related to the homogeneous Laplace, Helmholtz, and Maxwell equations as available in NGSolve.
 - The Python scripts in the `convergence_timing` folder implement systematic convergence tests, specifically h-versions, for model problems with a known non-trivial analytical solution. Using the analytical solution, the exact error in the data can be computed, which the BEM provides for the respective trace.
 
 For additional online documentation with demos and a touch of theory, visit: https://weggler.github.io/docu-ngsbem/intro.html

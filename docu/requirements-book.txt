@@ -1,0 +1,14 @@
+jupyter-book>=2,<3
+numpy
+scipy
+matplotlib
+jupyterlab
+notebook
+ipykernel
+nbclient
+nbconvert
+ipywidgets
+anywidget
+webgui_jupyter_widgets
+pyvista
+vtk

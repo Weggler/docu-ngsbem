@@ -1,0 +1,77 @@
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://unpkg.com/sunburst-chart"></script>
+
+  <style>
+    body { margin: 0 }
+    .tooltip {
+      white-space: pre-line !important;
+      max-width: 800px !important;
+      word-wrap: break-word !important;
+      padding: 10px !important;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script>
+    const data = 
+{ name: "all", calls: 1, size: 0, value: 0.2198, min: 0.2198, max: 0.2198, avg: 0.2198, children: [{ name: "ngcore::ParallelFor<int,ngcore::EnterTaskManager(int)::{lambda(int)#1}>(ngcore::T_Range<int>,ngcore::EnterTaskManager(int)::{lambda(int)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 1, size: 0.001208, value: 0.001208, min: 0.001208, max: 0.001208, avg: 0.001208}]};
+
+const chart_type = 'time';
+
+    const color = d3.scaleOrdinal(d3.schemePaired);
+
+    let getTime = (t) =>
+    {
+       if(t>=1000)  return (t/1000).toPrecision(4) + '  s';
+       if(t>=0.1)   return t.toPrecision(4) + ' ms';
+       if(t>=1e-4)  return (t*1e3).toPrecision(4) + ' us';
+
+       return (t/1e6).toPrecision(4) + ' ns';
+    };
+
+    const KB_ = 1024;
+    const MB_ = KB_*1024;
+    const GB_ = MB_*1024;
+    let getMemory = (m) =>
+    {
+       if(m>=GB_)  return (m/GB_).toPrecision(4) + ' GB';
+       if(m>=MB_)  return (m/MB_).toPrecision(4) + ' MB';
+       if(m>=KB_)  return (m/KB_).toPrecision(4) + ' KB';
+       return m.toPrecision(4) + ' B';
+    };
+
+    Sunburst()
+      .data(data)
+      .size('size')
+      .color(d => color(d.name))
+      .tooltipTitle((d, node) => { return node.parent ? node.parent.data.name + " &rarr; " + d.name : d.name; })
+      .tooltipContent((d, node) => {
+        if(chart_type=="memory")
+        {
+          return `Total Memory: <i>${getMemory(d.value)}</i> <br>`
+               + `Memory: <i>${getMemory(d.size)}</i>`
+        }
+        else
+        {
+          return `Time: <i>${getTime(d.value)}</i> <br>`
+               + `calls: <i>${d.calls}</i> <br>`
+               + `min: <i>${getTime(d.min)}</i> <br>`
+               + `max: <i>${getTime(d.max)}</i> <br>`
+               + `avg: <i>${getTime(d.avg)}</i>`
+        }
+      })
+      (document.getElementById('chart'));
+
+      // Line breaks in tooltip
+      var all = document.getElementsByClassName('sunbirst-tooltip');
+      for (var i = 0; i < all.length; i++) {
+          all[i].white_space = "";
+      }
+  </script>
+</body>
+

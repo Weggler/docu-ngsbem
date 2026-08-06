@@ -1,0 +1,138 @@
+%EventDef PajeDefineContainerType 0 
+%       Alias string 
+%       Type string 
+%       Name string 
+%EndEventDef 
+%EventDef PajeDefineVariableType 1 
+%       Alias string 
+%       Type string 
+%       Name string 
+%       Color color 
+%EndEventDef 
+%EventDef PajeDefineStateType 2 
+%       Alias string 
+%       Type string 
+%       Name string 
+%EndEventDef 
+%EventDef PajeDefineEventType 3 
+%       Alias string 
+%       Type string 
+%       Name string 
+%       Color color 
+%EndEventDef 
+%EventDef PajeDefineLinkType 4 
+%       Alias string 
+%       Type string 
+%       StartContainerType string 
+%       EndContainerType string 
+%       Name string 
+%EndEventDef 
+%EventDef PajeDefineEntityValue 5 
+%       Alias string 
+%       Type string 
+%       Name string 
+%       Color color 
+%EndEventDef 
+%EventDef PajeCreateContainer 6 
+%       Time date 
+%       Alias string 
+%       Type string 
+%       Container string 
+%       Name string 
+%EndEventDef 
+%EventDef PajeDestroyContainer 7 
+%       Time date 
+%       Type string 
+%       Name string 
+%EndEventDef 
+%EventDef PajeSetVariable 8 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value double 
+%EndEventDef
+%EventDef PajeAddVariable 9 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value double 
+%EndEventDef
+%EventDef PajeSubVariable 10 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value double 
+%EndEventDef
+%EventDef PajeSetState 11 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value string 
+%EndEventDef
+%EventDef PajePushState 12 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value string 
+%       Id string 
+%EndEventDef
+%EventDef PajePopState 13 
+%       Time date 
+%       Type string 
+%       Container string 
+%EndEventDef
+%EventDef PajeResetState 14 
+%       Time date 
+%       Type string 
+%       Container string 
+%EndEventDef
+%EventDef PajeStartLink 15 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value string 
+%       StartContainer string 
+%       Key string 
+%EndEventDef
+%EventDef PajeEndLink 16 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value string 
+%       EndContainer string 
+%       Key string 
+%EndEventDef
+%EventDef PajeNewEvent 17 
+%       Time date 
+%       Type string 
+%       Container string 
+%       Value string 
+%EndEventDef
+0	a1	0	"Task Manager"
+0	a2	a1	"Node"
+0	a3	a1	"Thread"
+0	a4	a1	"Jobs"
+0	a5	a1	"Memory usage"
+2	a6	a4	"Job"
+2	a7	a3	"Task"
+2	a8	a3	"Timer state"
+6	0	a9	a1	0	"The task manager"
+6	0	a10	a4	a9	"Jobs"
+6	0	a11	a5	a9	"Memory"
+1	a12	a1	"Memory [MB]"	"1.0 1.0 1.0"
+6	0	a13	a2	a9	"Node 0"
+6	0	a14	a3	a13	"Thread 0"
+5	a15	a6	"ngcore::ParallelFor<int,ngcore::EnterTaskManager(int)::{lambda(int)#1}>(ngcore::T_Range<int>,ngcore::EnterTaskManager(int)::{lambda(int)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}"	"0.474876604153514 0 1"
+5	a16	a7	"ngcore::ParallelFor<int,ngcore::EnterTaskManager(int)::{lambda(int)#1}>(ngcore::T_Range<int>,ngcore::EnterTaskManager(int)::{lambda(int)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}"	"0.474876604153514 0 1"
+4	a17	a2	a3	a3	"links"
+12	0.218637060682879	a6	a10	a15	0
+13	0.219844973512267	a6	a10
+8	0	a12	a11	0
+12	0.218884864259037	a7	a14	a16	0
+13	0.21906527355716	a7	a14
+12	0.219178288577249	a7	a14	a16	1
+13	0.219197297219771	a7	a14
+12	0.219227711047807	a7	a14	a16	2
+13	0.219238425009956	a7	a14
+12	0.219269875673039	a7	a14	a16	3
+13	0.219281626470235	a7	a14

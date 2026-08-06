@@ -1,0 +1,42 @@
+version: 1
+
+project:
+  title: NGSBEM
+  description: Documentation and demonstrations for NGSBEM
+  github: https://github.com/Weggler/docu-ngsbem
+
+  bibliography:
+    - references.bib
+
+  toc:
+    - file: intro.md
+
+    - title: Short and Sweet
+      children:
+        - file: short_and_sweet/why_bem.md
+        - file: short_and_sweet/python_interface.md
+        - file: short_and_sweet/ho_cvg.md
+
+    - title: Demos
+      children:
+        - file: demos/Laplace_DtN_indirect.ipynb
+        #- file: demos/Laplace_DtN_quads_indirect.ipynb
+        #- file: demos/Laplace_DtN_direct.ipynb
+        #- file: demos/Laplace_NtD_indirect.ipynb
+        #- file: demos/Laplace_NtD_direct.ipynb
+        #- file: demos/Laplace_Mixed.ipynb
+        #- file: demos/BEM_Laplace_Capacitor.ipynb
+        #- file: demos/Poisson.ipynb
+        #- file: demos/FEMBEM_Capacitor.ipynb
+        #- file: demos/Helmholtz_Brakhage_Werner.ipynb
+        #- file: demos/Maxwell_DtN_indirect.ipynb
+        #- file: demos/Maxwell_DtN_direct.ipynb
+        #- file: demos/Maxwell_DtN_stabilized.ipynb
+        #- file: demos/Maxwell_Mixed.ipynb
+        #- file: demos/Maxwell_EFIE_Preconditioner.ipynb
+
+site:
+  template: book-theme
+  title: NGSBEM
+  options:
+    logo: logo.png
