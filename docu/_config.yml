@@ -27,7 +27,7 @@ bibtex_citestyle: author_year
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/Weggler/docu_ngsbem 
+  url: https://github.com/Weggler/docu-ngsbem
   path_to_book: docu   
   branch: main  
 
@@ -36,4 +36,3 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-
