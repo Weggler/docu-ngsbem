@@ -7,6 +7,7 @@ from ngsolve.bem import *
 from ngsolve.krylovspace import GMRes
 from ngsolve.fem import CompilePythonModule
 from pathlib import Path
+import sys
 import time
 
 from convergence_timing.common import append_results
@@ -18,8 +19,8 @@ miecurrent = None
 def get_mie_current():
     global miecurrent
     if miecurrent is None:
-        # This implementation works with both Apple Clang and Ubuntu GCC.
-        txt = Path(__file__).with_name("mie_ngs.cpp").read_text()
+        source = "mie_ngs.cpp" if sys.platform == "darwin" else "mie.cpp"
+        txt = Path(__file__).with_name(source).read_text()
         mie = CompilePythonModule(txt, init_function_name="Mie", add_header=False)
         miecurrent = mie.MieCurrent()
     return miecurrent
