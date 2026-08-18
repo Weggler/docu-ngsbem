@@ -1,0 +1,3 @@
+ngsolve==6.2.2606
+pandas>=2,<3
+pytest>=8,<10
