@@ -8,102 +8,103 @@ from ngsolve.krylovspace import GMRes
 from ngsolve.fem import CompilePythonModule
 from pathlib import Path
 import time
-import pandas as pd
+
+from convergence_timing.common import append_results
 
 csv_path = Path("results.csv")
-results = []
+miecurrent = None
 
-# Get reference mie series current from cpp
-#
-# Default:
-#   mie.cpp uses the standard C++ special functions
-#   (std::assoc_legendre, std::cyl_bessel_j, std::cyl_neumann)
-#   and is the preferred portable implementation.
-#
-# Alternative:
-#   On some macOS setups these functions may not be available
-#   or may fail to compile. In that case switch to mie_ngs.cpp,
-#   which uses NGSolve / BEM routines instead.
-#
-txt = Path("mie.cpp").read_text()
-#txt = Path("mie_ngs.cpp").read_text()
 
-mie = CompilePythonModule(txt, init_function_name="Mie", add_header=False)
-miecurrent = mie.MieCurrent()
+def get_mie_current():
+    global miecurrent
+    if miecurrent is None:
+        # This implementation works with both Apple Clang and Ubuntu GCC.
+        txt = Path(__file__).with_name("mie_ngs.cpp").read_text()
+        mie = CompilePythonModule(txt, init_function_name="Mie", add_header=False)
+        miecurrent = mie.MieCurrent()
+    return miecurrent
+
 
 # Scattering on a sphere
 sp = Sphere((0, 0, 0), 0.25)
 kappa = 5.0
 E_inc = CF((1, 0, 0)) * exp(1j * kappa * z)
 
-print("order ndof error")
-for order in range(1, 5):
-    for n in range(1, 7):
-        h = 0.2 / n
-        mesh = Mesh(
-            OCCGeometry(sp).GenerateMesh(
-                maxh=h, perfstepsend=meshing.MeshingStep.MESHSURFACE
+
+def run_maxwell_mie(order, n):
+    reference_current = get_mie_current()
+    h = 0.2 / n
+    mesh = Mesh(
+        OCCGeometry(sp).GenerateMesh(
+            maxh=h, perfstepsend=meshing.MeshingStep.MESHSURFACE
+        )
+    ).Curve(4)
+    fesHDiv = HDivSurface(mesh, order=order, complex=True)
+    uHDiv, vHDiv = fesHDiv.TnT()
+
+    rhs = LinearForm(-E_inc * vHDiv.Trace() * ds(bonus_intorder=10)).Assemble()
+
+    j = GridFunction(fesHDiv)
+    start = time.time()
+    intorder = order + 1
+    with TaskManager():
+        pre = (
+            BilinearForm(
+                uHDiv.Trace() * vHDiv.Trace() * ds(bonus_intorder=intorder)
             )
-        ).Curve(4)
-        fesHDiv = HDivSurface(mesh, order=order, complex=True)
-        uHDiv, vHDiv = fesHDiv.TnT()
-
-        rhs = LinearForm(-E_inc * vHDiv.Trace() * ds(bonus_intorder=10)).Assemble()
-
-        j = GridFunction(fesHDiv)
-        start = time.time()
-        intorder = order + 1
-        with TaskManager():
-            pre = (
-                BilinearForm(
-                    uHDiv.Trace() * vHDiv.Trace() * ds(bonus_intorder=intorder)
-                )
-                .Assemble()
-                .mat.Inverse(freedofs=fesHDiv.FreeDofs())
-            )
-            # V = MaxwellSingleLayerPotentialOperator(fesHDiv, kappa, intorder=intorder)
-            # GMRes(A=V.mat, pre=pre, b=rhs.vec, x=j.vec, tol=1e-11, maxsteps=2000, printrates=False)
-            V1 = (
-                HelmholtzSL(uHDiv.Trace() * ds(bonus_intorder=intorder), kappa)
-                * vHDiv.Trace()
-                * ds(bonus_intorder=intorder)
-            )
-            V2 = (
-                HelmholtzSL(div(uHDiv.Trace()) * ds(bonus_intorder=intorder), kappa)
-                * div(vHDiv.Trace())
-                * ds(bonus_intorder=intorder)
-            )
-            V = kappa * V1.mat - (1 / kappa) * V2.mat
-            GMRes(
-                A=V,
-                pre=pre,
-                b=rhs.vec,
-                x=j.vec,
-                tol=1e-11,
-                maxsteps=2000,
-                printrates=False,
-            )
-
-        end = time.time()
-        elapsed = end - start
-
-        j.vec[:] *= kappa
-
-        error = sqrt(Integrate(Norm(j - miecurrent) ** 2, mesh, BND))
-        print(order, fesHDiv.ndof, error)
-
-        results.append(
-            {
-                "order": order,
-                "ndof": fesHDiv.ndof,
-                "err": float(error),
-                "time": elapsed,
-                "type": "mie",
-            }
+            .Assemble()
+            .mat.Inverse(freedofs=fesHDiv.FreeDofs())
+        )
+        # V = MaxwellSingleLayerPotentialOperator(fesHDiv, kappa, intorder=intorder)
+        # GMRes(A=V.mat, pre=pre, b=rhs.vec, x=j.vec, tol=1e-11, maxsteps=2000, printrates=False)
+        V1 = (
+            HelmholtzSL(uHDiv.Trace() * ds(bonus_intorder=intorder), kappa)
+            * vHDiv.Trace()
+            * ds(bonus_intorder=intorder)
+        )
+        V2 = (
+            HelmholtzSL(div(uHDiv.Trace()) * ds(bonus_intorder=intorder), kappa)
+            * div(vHDiv.Trace())
+            * ds(bonus_intorder=intorder)
+        )
+        V = kappa * V1.mat - (1 / kappa) * V2.mat
+        GMRes(
+            A=V,
+            pre=pre,
+            b=rhs.vec,
+            x=j.vec,
+            tol=1e-11,
+            maxsteps=2000,
+            printrates=False,
         )
 
-df = pd.DataFrame(results)
-if csv_path.exists():
-    df.to_csv(csv_path, mode="a", header=False, index=False)
-else:
-    df.to_csv(csv_path, mode="w", header=True, index=False)
+    end = time.time()
+    elapsed = end - start
+
+    j.vec[:] *= kappa
+
+    error = sqrt(Integrate(Norm(j - reference_current) ** 2, mesh, BND))
+    print(order, fesHDiv.ndof, error)
+
+    return {
+        "order": order,
+        "ndof": fesHDiv.ndof,
+        "err": float(error),
+        "time": elapsed,
+        "type": "mie",
+    }
+
+
+def main():
+    results = []
+
+    print("order ndof error")
+    for order in range(1, 5):
+        for n in range(1, 7):
+            results.append(run_maxwell_mie(order, n))
+
+    append_results(results, csv_path)
+
+
+if __name__ == "__main__":
+    main()
