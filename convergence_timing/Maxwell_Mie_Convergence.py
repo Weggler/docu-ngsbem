@@ -12,19 +12,33 @@ import time
 
 from convergence_timing.common import append_results
 
-csv_path = Path("results.csv")
+csv_path = Path("bem_results.csv")
 miecurrent = None
-
 
 def get_mie_current():
     global miecurrent
+
     if miecurrent is None:
         source = "mie_ngs.cpp" if sys.platform == "darwin" else "mie.cpp"
-        txt = Path(__file__).with_name(source).read_text()
-        mie = CompilePythonModule(txt, init_function_name="Mie", add_header=False)
-        miecurrent = mie.MieCurrent()
-    return miecurrent
+        source_path = Path(__file__).with_name(source)
 
+        if not source_path.exists():
+            raise FileNotFoundError(
+                f"Mie implementation not found for platform {sys.platform!r}: "
+                f"{source_path}"
+            )
+
+        txt = source_path.read_text()
+
+        mie = CompilePythonModule(
+            txt,
+            init_function_name="Mie",
+            add_header=False,
+        )
+
+        miecurrent = mie.MieCurrent()
+
+    return miecurrent
 
 # Scattering on a sphere
 sp = Sphere((0, 0, 0), 0.25)

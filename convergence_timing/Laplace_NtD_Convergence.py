@@ -11,7 +11,7 @@ from pathlib import Path
 
 from convergence_timing.common import append_results
 
-csv_path = Path("results.csv")
+csv_path = Path("bem_results.csv")
 
 
 # Bottom sphere: Dirichlet boundary, top sphere: Neumann boundary
