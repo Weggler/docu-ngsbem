@@ -373,50 +373,6 @@ def run_pid_convergence(
     return results
 
 
-
-def run_pi1(order, refinement):
-    """Run one Pi^1 convergence sample for pytest.
-
-    ``refinement`` is the number of uniform h-refinement steps applied to the
-    same initial surface mesh.  The returned dictionary intentionally follows
-    the common convergence-test interface ``{"err": ..., "ndof": ...}``.
-    """
-    rows = run_pi1_pi0_convergence(
-        orders=(order,),
-        refinement_levels=range(refinement + 1),
-    )
-    row = rows[-1]
-    return {
-        "err": row["err_int_1"],
-        "ndof": row["ndof_Pi1"],
-    }
-
-
-def run_pi0(order, refinement):
-    """Run one Pi^0 convergence sample for pytest."""
-    rows = run_pi1_pi0_convergence(
-        orders=(order,),
-        refinement_levels=range(refinement + 1),
-    )
-    row = rows[-1]
-    return {
-        "err": row["err_int_0"],
-        "ndof": row["ndof_Pi0"],
-    }
-
-
-def run_pid(order, refinement):
-    """Run one Pi^d convergence sample for pytest."""
-    rows = run_pid_convergence(
-        orders=(order,),
-        refinement_levels=range(refinement + 1),
-    )
-    row = rows[-1]
-    return {
-        "err": row["err_int_d"],
-        "ndof": row["ndof"],
-    }
-
 def main():
     pi1_pi0_results = run_pi1_pi0_convergence()
     _write_results(pi1_pi0_results, PI1_PI0_CSV)
