@@ -44,4 +44,4 @@ jobs:
           python -m pip install -r requirements-test.txt
 
       - name: Run convergence tests
-        run: python -m pytest tests/test_convergence.py --verbose
+        run: python -m pytest tests --verbose
