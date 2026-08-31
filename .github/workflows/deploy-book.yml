@@ -43,7 +43,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r docu/requirements.txt
-          python -m pip install "ngsolve==6.2.2606"
+          python -m pip install "ngsolve"
 
       - name: Verify NGSolve
         run: |
