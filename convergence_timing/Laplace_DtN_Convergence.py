@@ -9,7 +9,7 @@ from ngsolve.bem import *
 import time
 from pathlib import Path
 
-from convergence_timing.common import append_results
+from convergence_timing.common import append_results, max_mesh_size
 
 csv_path = Path("bem_results.csv")
 
@@ -19,8 +19,10 @@ sp = Sphere( (0,0,0), 1)
 
 
 def run_laplace_dtn(order, i):
+    requested_maxh = 0.75 / i
     # mesh = Mesh( OCCGeometry(sp).GenerateMesh(maxh=0.75 / i, perfstepsend=meshing.MeshingStep.MESHSURFACE)).Curve(order)
-    mesh = Mesh( OCCGeometry(sp).GenerateMesh(maxh=0.75 / i))#.Curve(4)
+    mesh = Mesh( OCCGeometry(sp).GenerateMesh(maxh=requested_maxh))#.Curve(4)
+    h = max_mesh_size(mesh)
 
     fesL2 = SurfaceL2(mesh, order=order-1, dual_mapping=True)
     u,v = fesL2.TnT()
@@ -57,6 +59,7 @@ def run_laplace_dtn(order, i):
 
     return {
         "order": order,
+        "h": h,
         "ndof": fesL2.ndof,
         "err": float(errn),
         "time": elapsed,

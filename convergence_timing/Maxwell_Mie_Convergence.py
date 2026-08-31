@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 import time
 
-from convergence_timing.common import append_results
+from convergence_timing.common import append_results, max_mesh_size
 
 csv_path = Path("bem_results.csv")
 miecurrent = None
@@ -48,12 +48,13 @@ E_inc = CF((1, 0, 0)) * exp(1j * kappa * z)
 
 def run_maxwell_mie(order, n):
     reference_current = get_mie_current()
-    h = 0.2 / n
+    requested_maxh = 0.2 / n
     mesh = Mesh(
         OCCGeometry(sp).GenerateMesh(
-            maxh=h, perfstepsend=meshing.MeshingStep.MESHSURFACE
+            maxh=requested_maxh, perfstepsend=meshing.MeshingStep.MESHSURFACE
         )
     ).Curve(4)
+    h = max_mesh_size(mesh)
     fesHDiv = HDivSurface(mesh, order=order, complex=True)
     uHDiv, vHDiv = fesHDiv.TnT()
 
@@ -103,6 +104,7 @@ def run_maxwell_mie(order, n):
 
     return {
         "order": order,
+        "h": h,
         "ndof": fesHDiv.ndof,
         "err": float(error),
         "time": elapsed,
