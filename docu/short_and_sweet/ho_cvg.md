@@ -25,7 +25,7 @@ as unique solution of the Neumann boundary value problem
 |:-:|:-:|
 |$\left\{ \begin{array}{rcl l} \Delta u &=& 0, \quad  & \mathrm{in} \, \Omega\,, \\ \gamma_1 u &=& u_1, \quad & \mathrm{on} \, \Gamma\,. \end{array} \right.\quad\quad\quad$    |  ![](resources/BEM_interior.png)  |
 
-Let $\Omega$ be the unit ball and $\Gamma$ the unit sphere, respectively. Using the NGSBEM solver we compute the Dirichlet data for varying order $p$ on a sequence of meshes with decreasing mesh size, i.e., $h \sim\frac1N$. As the exact solution is kown, we can compute the absolute $L_2$-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:
+Let $\Omega$ be the unit ball and $\Gamma$ the unit sphere, respectively. Using the NGSBEM solver we compute the Dirichlet data for varying order $p$ on a sequence of meshes with decreasing mesh size. As the exact solution is kown, we can compute the absolute $L_2$-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:
 
 
 ![](resources/laplace_NtD_accuracy.png) 
@@ -43,7 +43,7 @@ To analyse convergence rates for traces in $H^{-\frac12}(\Gamma)$ consider now t
 |:-:|:-:|
 |$\left\{ \begin{array}{rcl l} \Delta u &=& 0, \quad  & \mathrm{in} \, \Omega\,, \\ \gamma_0 u &=& u_0, \quad & \mathrm{on} \, \Gamma\,. \end{array} \right. \quad \quad\quad$    |  ![](resources/BEM_interior.png)  |
 
-Thus, again $u$ from Test 1 is the unique solution of this problem. Using the NGSBEM solver we compute the Neumann data for varying order $p$  on a sequence of meshes with decreasing mesh size, i.e., $h \sim\frac1N$. As the exact solution is kown, we compute the absolute $L_2$-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:
+Thus, again $u$ from Test 1 is the unique solution of this problem. Using the NGSBEM solver we compute the Neumann data for varying order $p$  on a sequence of meshes with decreasing mesh size. As the exact solution is kown, we compute the absolute $L_2$-error of the numerical solution. This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the Dirchlet trace:
 
 
 
@@ -70,7 +70,7 @@ The scattered electric field $\boldsymbol E$ solves the following boundary value
 |$ \left\{ \begin{array}{rcl l} \mathbf{\mathrm{curl}}\,\mathbf{\mathrm{curl}}\, \boldsymbol E - \kappa^2 \, \boldsymbol E&=& \boldsymbol 0, \quad  & \mathrm{in} \, \Omega^c\,, \\ \gamma_R \boldsymbol E &=& \boldsymbol E_{\mathrm{inc}}, \quad & \mathrm{on} \, \Gamma\,, \\ \textnormal{ + radiation  condition} & & &\|x\| \to \infty\,. \end{array} \right. \quad\quad\quad$    |  ![](resources/BEM_exterior.png)  |
 
 
-Using the NGSBEM solver we compute the Neumann data for varying order $p$ on a sequence of meshes with decreasing mesh size i.e., $h \sim\frac1N$. The mesh is approximated with curvilinear elements of order $4$. As the exact solution for Mie-scattering kown, we compute the absolute $L_2$-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:
+Using the NGSBEM solver we compute the Neumann data for varying order $p$ on a sequence of meshes with decreasing mesh size. The mesh is approximated with curvilinear elements of order $4$. As the exact solution for Mie-scattering kown, we compute the absolute $L_2$-error of the numerical solution.  This experiment is a proof of concept demonstrating examplarily the high order convergence rates that you can get with of a high order BEM solving for the surface current density:
 
 
 ![](resources/maxwell_mie_accuracy.png) 
