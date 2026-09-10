@@ -29,6 +29,10 @@ parts:
       - file: demos/Maxwell_EFIE_Preconditioner
       - file: demos/Lame_DtN_direct
       - file: demos/Lame_DtN_indirect
+  - caption: NGSBEM Solution
+    numbered: False
+    chapters:
+      - file: ngsbem_solution/fmm
   - caption: Background
     numbered: False
     chapters: 

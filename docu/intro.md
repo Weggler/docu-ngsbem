@@ -36,6 +36,12 @@ The demos show how to solve concrete problems using NGSBEM:
 
 These demos provide a hands-on view of the workflow, making the theory concrete.  
 
+**NGSBEM Solution:** Algorithms and Implementation
+
+This section explains the numerical algorithms behind NGSBEM solutions.
+Start with [Fast Multipole Acceleration](ngsbem_solution/fmm.ipynb), covering
+near and far field interactions, spherical expansions, and multilevel translations.
+
 **Background:** Theoretical Foundations
 
 This section introduces **energy spaces** and **trace spaces**.  
@@ -50,4 +56,3 @@ The presentation is theoretical and mainly follows {cite}`SauterSchwab2009` and 
 
 Overall, the repository offers a **hands-on introduction to NGSBEM**, linking practical demos to a concise summary of the **theoretical foundations**.  
 Explore it on GitHub: [https://github.com/Weggler/docu-ngsbem](https://github.com/Weggler/docu-ngsbem).  
-
