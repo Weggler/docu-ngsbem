@@ -252,7 +252,7 @@ public:
   }  
 };
 
-extern "C" void Mie(py::object & res) {
+extern "C" PYBIND11_EXPORT void Mie(py::object & res) {
   cout << "called mie series current" << endl;
 
   auto ngs = py::module::import("ngsolve");    
