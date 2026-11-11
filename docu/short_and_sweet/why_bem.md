@@ -37,6 +37,7 @@ One of the following pdes with given boundary condition:
 - fast and accurate assembly of system matrices using MLFMM
 - fast and accurate assembly of potentials using MLFMM with nearfield considerations
 - compatible with NGSolve 
+- high order quadrilateral and triangular elements 
 - user-friendly Python interface with declarative programming of variational formulations
 - potentials for all standard problems
 - tested and documented 
