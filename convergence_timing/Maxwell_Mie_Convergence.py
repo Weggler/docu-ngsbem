@@ -71,16 +71,16 @@ def run_maxwell_mie(order, n):
             .Assemble()
             .mat.Inverse(freedofs=fesHDiv.FreeDofs())
         )
-        # V = MaxwellSingleLayerPotentialOperator(fesHDiv, kappa, intorder=intorder)
+        # V = MaxwellSingleLayerPotentialOperator(fesHDiv.Trace(), kappa, intorder=intorder)
         # GMRes(A=V.mat, pre=pre, b=rhs.vec, x=j.vec, tol=1e-11, maxsteps=2000, printrates=False)
         V1 = (
-            HelmholtzSL(uHDiv * ds(bonus_intorder=intorder), kappa)
-            * vHDiv
+            HelmholtzSL(uHDiv.Trace() * ds(bonus_intorder=intorder), kappa)
+            * vHDiv.Trace()
             * ds(bonus_intorder=intorder)
         )
         V2 = (
-            HelmholtzSL(div(uHDiv) * ds(bonus_intorder=intorder), kappa)
-            * div(vHDiv)
+            HelmholtzSL(div(uHDiv.Trace()) * ds(bonus_intorder=intorder), kappa)
+            * div(vHDiv.Trace())
             * ds(bonus_intorder=intorder)
         )
         V = kappa * V1.mat - (1 / kappa) * V2.mat
