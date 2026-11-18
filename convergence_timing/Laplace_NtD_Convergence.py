@@ -46,7 +46,7 @@ def run_laplace_ntd(order, i):
     with TaskManager():
         pre = BilinearForm(uH1*vH1*ds(bonus_intorder=intorder)).Assemble().mat.Inverse(freedofs=fesH1.FreeDofs())
         D = LaplaceSL(curl(uH1)*ds(bonus_intorder=intorder)) * curl(vH1)*ds
-        M = BilinearForm( v.Trace() * uH1 * ds(bonus_intorder=intorder)).Assemble()
+        M = BilinearForm( v * uH1 * ds(bonus_intorder=intorder)).Assemble()
         Kt = LaplaceDL(u*ds(bonus_intorder=intorder))*vH1*ds
         rhs = ( (0.5 * M.mat.T - Kt.mat) * u1.vec ).Evaluate()
 
