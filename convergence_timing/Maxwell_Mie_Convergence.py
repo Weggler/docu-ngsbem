@@ -58,7 +58,7 @@ def run_maxwell_mie(order, n):
     fesHDiv = HDivSurface(mesh, order=order, complex=True)
     uHDiv, vHDiv = fesHDiv.TnT()
 
-    rhs = LinearForm(-E_inc * vHDiv * ds(bonus_intorder=10)).Assemble()
+    rhs = LinearForm(-E_inc * vHDiv.Trace() * ds(bonus_intorder=10)).Assemble()
 
     j = GridFunction(fesHDiv)
     start = time.time()
@@ -66,12 +66,12 @@ def run_maxwell_mie(order, n):
     with TaskManager():
         pre = (
             BilinearForm(
-                uHDiv * vHDiv * ds(bonus_intorder=intorder)
+                uHDiv.Trace() * vHDiv.Trace() * ds(bonus_intorder=intorder)
             )
             .Assemble()
             .mat.Inverse(freedofs=fesHDiv.FreeDofs())
         )
-        # V = MaxwellSingleLayerPotentialOperator(fesHDiv.Trace(), kappa, intorder=intorder)
+        # V = MaxwellSingleLayerPotentialOperator(fesHDiv, kappa, intorder=intorder)
         # GMRes(A=V.mat, pre=pre, b=rhs.vec, x=j.vec, tol=1e-11, maxsteps=2000, printrates=False)
         V1 = (
             HelmholtzSL(uHDiv.Trace() * ds(bonus_intorder=intorder), kappa)
